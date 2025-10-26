@@ -1,11 +1,7 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
-$db = new mysqli('localhost', 'root', '', 'opentome');
-if ($db->connect_errno) {
-    echo json_encode(['status' => 'error', 'message' => 'Database connection failed']);
-    exit();
-}
+include "database_connect.php";
 
 $username = isset($_POST['username']) ? trim($_POST['username']) : '';
 
