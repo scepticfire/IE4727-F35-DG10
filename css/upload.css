@@ -212,6 +212,33 @@ main form input[type="submit"]:hover {
     transform: scale(1.1); /* adjust the value: 1.05 = 5% larger, 1.15 = 15% larger */
 }
 
+/* Hide the default file input */
+input[type="file"] {
+  display: none;
+}
+
+/* Style the label as a button */
+.custom-file-upload {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #626396;
+  color: #c7deea;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.custom-file-upload:hover {
+  background-color: #7373a8;
+}
+
+.custom-file-upload:active {
+  transform: scale(0.98);
+}
+
+
 footer {
     text-align: center;
     padding: 20px;
