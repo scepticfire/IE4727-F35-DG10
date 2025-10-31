@@ -17,7 +17,7 @@ header {
     color: white;
     padding: 20px;
     grid-row: 1;
-    margin-bottom: 20px;
+    margin-bottom: 3px;
     border-bottom: 5px solid #111e48;
     position: relative; /* important for absolute centering of nav */
 }
@@ -51,9 +51,7 @@ nav {
     font-size: 0; /* removes whitespace between inline elements */
     display: flex;
     align-items: center; /* vertically centers all items (which aligns them horizontally on the same line) */
-
 }
-
 
 nav a,
 nav img {
@@ -70,22 +68,99 @@ nav a:not(:last-child)::after {
     margin: 0 10px; /* 50px on left and right */
 }
 
-    #leftcolumn {
-        float: left;
-        width: 150px;
-        background-color: rgb(251, 255, 188);
-        padding: 20px;
-        /* margin-top: 20px; */
-        margin-right: 20px; /* Space between columns */
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+.search-tab {
+    background-color: #040723;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 3px;
+    border-bottom: 5px solid #111e48;
+}
 
-    #rightcolumn {
-        margin-left: 190px; /* Left column width (150px) + padding (20px) + margin (20px) */
-        background-color: white;
-        padding: 20px;
-        /* margin-top: 20px; */
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+.search-bar {
+    width: 400px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #848ae0;
+    border-radius: 5px;
+    background-color: #0b0e27;
+    color: #606788; /* This controls the text color when you type */
+}
+
+.search-bar::placeholder {
+    color: #848ae0; /* Placeholder text color */
+}
+
+/* Focus attributes - when you click into the search bar */
+.search-bar:focus {
+    outline: none; /* Removes default browser outline */
+    transform: scale(1.1);
+}
+
+main {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+}
+
+#leftcolumn {
+    width: 150px;
+    background-color: #000000;
+    padding: 10px; /* Reduced from 20px */
+    margin: 10px; /* Added margin all around */
+    border-radius: 5px;
+    color: #00c8cf;
+    flex-shrink: 0;
+}
+
+#leftcolumn h2 {
+    color: #848ae0;
+    text-align: left;
+    font-size: 18px; /* or whatever size you prefer */
+    margin: 0; /* Removes default margin around h2 */
+    padding: 0; /* Removes any padding */
+    margin-bottom: 10px; /* Optional: adds small space below h2 */
+}
+
+#leftcolumn ul {
+    padding-left: 0;
+    margin-left: 0;
+    list-style-type: none; /* Removes bullets */
+}
+
+#leftcolumn li {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+#leftcolumn a {
+    color: #00c8cf; /* default color */
+    text-decoration: none;
+    text-align: left;
+}
+
+#leftcolumn a:hover {
+    color: #a8e612; /* color when hovering over link */
+}
+
+#leftcolumn a:active {
+    color: #a8e612; /* color when clicking link */
+}
+
+#rightcolumn {
+    flex: 1;
+    margin: 10px; /* Added margin all around */
+    background-color: #000000;
+    color: white;
+    padding: 10px;
+    border-radius:5px;
+    display: flex;
+    justify-content: center;
+}
+
+#rightcolumn .content {
+    width: 70%; /* 70% of the rightcolumn space */
+    max-width: 1000px; /* optional: set a max width */
+}
