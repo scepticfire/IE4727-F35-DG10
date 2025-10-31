@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Basic Webpage</title>
+    <link rel="stylesheet" href="../css/upload.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:wght@400;700&family=Koh+Santepheap:wght@100;300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="../assets/images/logoicon.png" alt="Library Logo" class="logo-icon">
+            <h1>OpenTome</h1>
+        </div>
+        <nav>
+            <img src="../assets/images/home-svg.svg" alt="Home">
+            <a href="main.html">Home</a>
+            <img src="../assets/images/books-svg.svg" alt="Books">
+            <a href="books.html">Books</a>
+            <img src="../assets/images/upload-svg.svg" alt="Upload">
+            <a href="upload.html">Upload</a>
+            <a href="purchase.html">Purchase</a>
+        </nav>
+    </header>
+    
+    <main>
+      <h2>UPLOAD BOOKS</h2>
+      <p>Want to upload your own books?Fill out the form as necessary. Required fields are marked with an asterisk*</p>
+              <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo cons
+             equat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+             dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </p>
+      
+      <form method="post" action="" onsubmit="">
+        <label for="name">*Title:</label>
+        <input type="text" name="name" required>
+        
+        <label for="author">*Author:</label>
+        <input type="text" name="author" required>
+
+        <label for="language">*Language:</label>
+        <input type="text" name="language" required>
+
+        <label for="description">*Description:</label>
+        <textarea name="description" name="description" required></textarea>
+
+        <label>*Genre:</label>
+
+        <div class="genre-buttons">
+           <input type="checkbox" id="action" name="genre" value="action">
+          <label for="action">Action</label>
+
+          <input type="checkbox" id="adventure" name="genre" value="adventure">
+          <label for="adventure">Adventure</label>
+
+          <input type="checkbox" id="autobiography" name="genre" value="autobiography">
+          <label for="autobiography">Autobiography</label>
+
+          <input type="checkbox" id="biography" name="genre" value="biography">
+          <label for="biography">Biography</label>
+
+          <input type="checkbox" id="children" name="genre" value="children">
+          <label for="children">Children</label>
+
+          <input type="checkbox" id="classics" name="genre" value="classics">
+          <label for="classics">Classics</label>
+
+          <input type="checkbox" id="comedy" name="genre" value="comedy">
+          <label for="comedy">Comedy</label>
+
+          <input type="checkbox" id="comingofage" name="genre" value="comingofage">
+          <label for="comingofage">Coming Of Age</label>
+
+          <input type="checkbox" id="contemporary" name="genre" value="contemporary">
+          <label for="contemporary">Contemporary</label>
+
+          <input type="checkbox" id="crime" name="genre" value="crime">
+          <label for="crime">Crime</label>
+
+          <input type="checkbox" id="drama" name="genre" value="drama">
+          <label for="drama">Drama</label>
+
+          <input type="checkbox" id="erotica" name="genre" value="erotica">
+          <label for="erotica">Erotica</label>
+
+          <input type="checkbox" id="fantasy" name="genre" value="fantasy">
+          <label for="fantasy">Fantasy</label>
+
+          <input type="checkbox" id="fiction" name="genre" value="fiction">
+          <label for="fiction">Fiction</label>
+
+          <input type="checkbox" id="gothic" name="genre" value="gothic">
+          <label for="gothic">Gothic</label>
+
+          <input type="checkbox" id="history" name="genre" value="history">
+          <label for="history">History</label>
+
+          <input type="checkbox" id="horror" name="genre" value="horror">
+          <label for="horror">Horror</label>
+
+          <input type="checkbox" id="memoir" name="genre" value="memoir">
+          <label for="memoir">Memoir</label>
+
+          <input type="checkbox" id="mystery" name="genre" value="mystery">
+          <label for="mystery">Mystery</label>
+
+          <input type="checkbox" id="nonfiction" name="genre" value="nonfiction">
+          <label for="nonfiction">Nonfiction</label>
+
+          <input type="checkbox" id="philosophy" name="genre" value="philosophy">
+          <label for="philosophy">Philosophy</label>
+
+          <input type="checkbox" id="poetry" name="genre" value="poetry">
+          <label for="poetry">Poetry</label>
+
+          <input type="checkbox" id="psychological" name="genre" value="psychological">
+          <label for="psychological">Psychological</label>
+
+          <input type="checkbox" id="romance" name="genre" value="romance">
+          <label for="romance">Romance</label>
+
+          <input type="checkbox" id="satire" name="genre" value="satire">
+          <label for="satire">Satire</label>
+
+          <input type="checkbox" id="science" name="genre" value="science">
+          <label for="science">Science</label>
+
+          <input type="checkbox" id="sciencefiction" name="genre" value="sciencefiction">
+          <label for="sciencefiction">Science Fiction</label>
+
+          <input type="checkbox" id="selfhelp" name="genre" value="selfhelp">
+          <label for="selfhelp">Self Help</label>
+
+          <input type="checkbox" id="shorts" name="genre" value="shorts">
+          <label for="shorts">Shorts</label>
+
+          <input type="checkbox" id="spirituality" name="genre" value="spirituality">
+          <label for="spirituality">Spirituality</label>
+
+          <input type="checkbox" id="survival" name="genre" value="survival">
+          <label for="survival">Survival</label>
+
+          <input type="checkbox" id="suspense" name="genre" value="suspense">
+          <label for="suspense">Suspense</label>
+
+          <input type="checkbox" id="thriller" name="genre" value="thriller">
+          <label for="thriller">Thriller</label>
+
+          <input type="checkbox" id="travel" name="genre" value="travel">
+          <label for="travel">Travel</label>
+
+          <input type="checkbox" id="western" name="genre" value="western">
+          <label for="western">Western</label>
+
+          <input type="checkbox" id="youngadult" name="genre" value="youngadult">
+          <label for="youngadult">Young Adult</label>
+        </div>
+
+        <input type="file" id="image" name="image" accept="image/*">
+        <label for="image" class="custom-file-upload">Upload Cover Picture</label>
+        <span id="file-name">No file chosen</span>
+
+        <div class="button-container">
+            <input type="reset">
+            <input type="submit" value="Upload">
+        </div>
+
+      </form>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 My Website. All rights reserved.</p>
+    </footer>
+<script src="../js/fileuploadstyling.js"></script>
+</body>
+</html>

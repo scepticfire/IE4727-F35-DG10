@@ -1,0 +1,250 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0b0e27;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    align-items: center; /* vertically align items */
+    justify-content: center; /* center flex items as a group */
+    background-color: #040723;
+    color: white;
+    padding: 20px;
+    grid-row: 1;
+    margin-bottom: 20px;
+    border-bottom: 5px solid #111e48;
+    position: relative; /* important for absolute centering of nav */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* pushes nav to the center */
+}
+
+.logo-icon {
+    height: 50px;   /* adjust depending on your design */
+    margin-right: 10px; /* space between icon and title */
+}
+
+/* push the h1 to the left of the header */
+header h1 {
+    font-family: "Bona Nova SC", serif;
+    font-weight: 400;
+    font-size: 3em;
+    margin: 0;
+    margin-right: auto; /* pushes everything else to the right */
+    color: #00c8cf;
+}
+
+
+nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0; /* removes whitespace between inline elements */
+    display: flex;
+    align-items: center; /* vertically centers all items (which aligns them horizontally on the same line) */
+
+}
+
+
+nav a,
+nav img {
+    font-family: "Koh Santepheap", serif;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 20px; /* restore font size for links */
+    text-decoration: none;
+    color: #848ae0;
+}
+
+nav a:not(:last-child)::after {
+    content: ' | ';
+    margin: 0 10px; /* 50px on left and right */
+}
+
+main {
+    color:white;
+    grid-row: 2;
+    margin: 20px auto;
+    padding: 20px 0;           /* top & bottom padding */
+    width: 70%;
+}
+
+main h2 {
+    font-family: "Koh Santepheap", serif;
+    font-weight: 400;
+    font-style: "regular";
+    color: #606788; 
+}
+
+main form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* label column auto-sizes, input takes rest */
+    gap: 40px 20px; /* 15px row gap, 20px column gap */
+    max-width: 100%;
+    color: #606788;
+    font-size: 2em;
+}
+
+main form label {
+    text-align: left; /* aligns label text to the right */
+}
+
+main form input[type="text"] {
+    background-color: transparent;
+    border: 0.5px solid #606788;
+    border-radius: 10px;
+    color: #606788;
+    font-family: Arial, sans-serif;
+    font-size: 0.7em;
+}
+
+main form input[type="text"]:focus {
+    outline: none;
+    border: 2px solid #606788;
+    border-radius: 10px;
+}
+
+main form textarea {
+    background-color: transparent;
+    border: 0.5px solid #606788;
+    border-radius: 10px;
+    color: #606788;
+    height: 150px; 
+    resize: vertical; 
+    font-family: Arial, sans-serif;
+    font-size: 0.7em;
+}
+
+main form textarea:focus {
+    outline: none;
+    border: 2px solid #606788;
+    border-radius: 10px;
+}
+
+
+/* Make genre section span full width */
+main form label[for="genre-label"] {
+    grid-column: 1 / -1; /* spans both columns */
+    text-align: left;
+}
+
+main form .genre-buttons {
+    grid-column: 1 / -1; /* spans both columns */
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columns */
+    gap: 10px;
+}
+
+/* Hide the actual checkbox */
+.genre-buttons input[type="checkbox"] {
+    display: none;
+}
+
+/* Style the label as a button */
+.genre-buttons label {
+    padding: 10px 20px;
+    background-color: #626396;
+    color: #c7deea;
+    border: 1px solid #626396;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-size: 0.5em;
+}
+
+/* Hover effect */
+.genre-buttons label:hover {
+    background-color: #7373a8;
+}
+
+.genre-buttons input[type="checkbox"]:checked + label {
+    background-color: #404e42;
+    color: #a8e612;
+    border-color: #a8e612;
+}
+
+/* Container for buttons */
+main form .button-container {
+    grid-column: 1 / -1; /* span both columns */
+    display: flex;
+    justify-content: center; /* center the buttons */
+    gap: 20px; /* 20px space between buttons */
+    margin-top: 20px;
+}
+
+main form input[type="reset"],
+main form input[type="submit"] {
+    padding: 10px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    border: none;
+    width: 200px; /* set fixed width for each button */
+}
+
+main form input[type="reset"],
+main form input[type="submit"] {
+    transition: transform 0.2s ease;
+}
+
+main form input[type="reset"] {
+    background-color: #626396;
+    color: #c7deea;
+}
+
+main form input[type="submit"] {
+    background-color: #16556f;
+    color: #c7deea;
+}
+
+main form input[type="reset"]:hover,
+main form input[type="submit"]:hover {
+    transform: scale(1.1); /* adjust the value: 1.05 = 5% larger, 1.15 = 15% larger */
+}
+
+/* Hide the default file input */
+input[type="file"] {
+  display: none;
+}
+
+/* Style the label as a button */
+.custom-file-upload {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #626396;
+  color: #c7deea;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.custom-file-upload:hover {
+  background-color: #7373a8;
+}
+
+.custom-file-upload:active {
+  transform: scale(0.98);
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    background-color: #040723;
+    grid-row: 3;
+    margin-top: 20px;      /* adds space */
+    border-top: 5px solid #111e48; /* sets color */
+}
