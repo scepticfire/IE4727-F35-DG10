@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Basic Webpage</title>
-    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../css/sign_in.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:wght@400;700&family=Koh+Santepheap:wght@100;300;400&display=swap" rel="stylesheet">
@@ -25,34 +25,27 @@
             <img src="../assets/images/purchase-svg.svg" alt="Purchase">
             <a href="purchase.html">Purchase</a>
             <img src="../assets/images/sign_in-svg.svg" alt="Sign in">
-            <a href="login.html">Sign in</a>
+            <a href="sign_in.html">Sign in</a>
         </nav>
     </header>
     
-    <main>
-      <h2>Purchase books</h2>
-      <p>Want to purchase certain books? Fill out the form to start your application. Required fields are marked with an asterisk*</p>
-      
-      <form method="post" action="" onsubmit="">
-        <label for="name">*Name:</label>
-        <input type="text" name="name" required>
-        
-        <label for="email">*Email:</label>
-        <input type="email" name="email" required>
+    <h1>Registration Page</h1>
 
-        <label for="book">Books:</label>
-        <input type="text" name="book">
+    <form action="scripts/account_register.php" id="acc_registerForm" method="post" novalidate>
+        Username:<br/>
+        <input type="text" name="username" id="username" required>
+        <small id="usernameStatus"></small><br /><br />
+        Password:<br/>
+        <input type="password" name="password" id="password" required><br /><br />
+        Password Confirmation:<br/>
+        <input type="password" name="password_check" id="password_check" required><br /><br />
+        Email:<br/>
+        <input type="email" name="email" id="email" required><br /><br />
 
-        <div class="button-container">
-            <input type="reset">
-            <input type="submit" value="Purchase">
-        </div>
+        <input type="submit" id="submitBtn" name="submitBtn" value="Submit">
+        <input type="reset" name="reset" value="Reset">
+    </form>
 
-      </form>
-    </main>
-    
-    <footer>
-        <p>&copy; 2025 My Website. All rights reserved.</p>
-    </footer>
+    <script src="scripts/form_validation.js"></script>
 </body>
 </html>
