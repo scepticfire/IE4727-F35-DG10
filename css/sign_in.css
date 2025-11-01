@@ -1,35 +1,16 @@
-/* color scheme */
-/* header blue : #040723
-body blue: #0b0e27
-optionsbar backgroundcolor:110f32
-active tab: a8e612
-unactivetab: 848ae0
-text: #606788
-background node: 16556f
-nodetext: 00d9eb
-normal button: 626396
-special button: 00c8cf
-button text: c7deea
-
-git status
-git add .                                    # Stage your changes first
-git status                                   # Check what will be committed
-git commit -m "included some html pages"     # Commit the staged changes
-git push 
-
-git fetch origin
-git merge origin/main
-*/
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #0b0e27;
+    /* background-color: #0b0e27; */
+    background-color: white;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr auto;  /*row1 will be content size, row2 is stretched,row3 is content size*/
     min-height: 100vh;
+    color:black;
+    /* color:white; */
+
 }
 
 header {
@@ -92,40 +73,3 @@ nav a:not(:last-child)::after {
     content: ' | ';
     margin: 0 10px; /* 50px on left and right */
 }
-/* ABOVE THIS LINE, ALL FILES ARE THE SAME //////////////////////////////////////////////////////////////////*/
-
-
-
-main {
-    color:white;
-    grid-row: 2;
-    margin: 20px auto;
-    padding: 20px 0;           /* top & bottom padding */
-    width: 100%;
-}
-
-main .content {
-    max-width: 1000px;    
-    margin: 0 auto;      
-    padding: 0 20px;     /* left & right padding */
-    box-sizing: border-box;
-}
-
-main h3 {
-    font-family: "Koh Santepheap", serif;
-    font-weight: 100;
-    font-style: italic;
-    text-align: center;
-    color: #606788; 
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    color: #666;
-    background-color: #040723;
-    grid-row: 3;
-    margin-top: 20px;      /* adds space */
-    border-top: 5px solid #111e48; /* sets color */
-}
-

@@ -1,0 +1,285 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0b0e27;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    align-items: center; /* vertically align items */
+    justify-content: center; /* center flex items as a group */
+    background-color: #040723;
+    color: white;
+    padding: 20px;
+    grid-row: 1;
+    margin-bottom: 20px;
+    border-bottom: 5px solid #111e48;
+    position: relative; /* important for absolute centering of nav */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* pushes nav to the center */
+}
+
+.logo-icon {
+    height: 50px;   /* adjust depending on your design */
+    margin-right: 10px; /* space between icon and title */
+}
+
+/* push the h1 to the left of the header */
+header h1 {
+    font-family: "Bona Nova SC", serif;
+    font-weight: 400;
+    font-size: 3em;
+    margin: 0;
+    margin-right: auto; /* pushes everything else to the right */
+    color: #00c8cf;
+}
+
+
+nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0; /* removes whitespace between inline elements */
+    display: flex;
+    align-items: center; /* vertically centers all items (which aligns them horizontally on the same line) */
+
+}
+
+
+nav a,
+nav img {
+    font-family: "Koh Santepheap", serif;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 20px; /* restore font size for links */
+    text-decoration: none;
+    color: #848ae0;
+}
+
+nav a:not(:last-child)::after {
+    content: ' | ';
+    margin: 0 10px; /* 50px on left and right */
+}
+/* Login Section Styles ///////////////////////////////////////////////////////////////////////*/
+
+
+#login-section {
+    grid-row: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+
+#login-section h1 {
+	font-weight: lighter;
+	margin: 0;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+}
+
+
+#login-section p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+}
+
+#login-section span {
+	font-size: 12px;
+}
+
+
+#login-section button {
+	border-radius: 20px;
+	border: 1px solid #35c4d2;
+	background-color: #35c4d2;
+	color: #606788;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+#login-section button:active {
+	transform: scale(0.95);
+}
+
+#login-section button:focus {
+	outline: none;
+}
+
+#login-section button.ghost {
+	background-color: transparent;
+	border-color: #606788;
+}
+
+#login-section form {
+	background-color: #606788;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+#login-section input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+#login-section .container {
+	background-color: #606788;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 768px;
+	max-width: 100%;
+	min-height: 480px;
+}
+
+#login-section .form-container {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	transition: all 0.6s ease-in-out;
+}
+
+#login-section .sign-in-container {
+	left: 0;
+	width: 50%;
+	z-index: 2;
+}
+
+#login-section .container.right-panel-active .sign-in-container {
+	transform: translateX(100%);
+}
+
+#login-section .sign-up-container {
+	left: 0;
+	width: 50%;
+	opacity: 0;
+	z-index: 1;
+}
+
+#login-section .container.right-panel-active .sign-up-container {
+	transform: translateX(100%);
+	opacity: 1;
+	z-index: 5;
+	animation: show 0.6s;
+}
+
+@keyframes show {
+	0%, 49.99% {
+		opacity: 0;
+		z-index: 1;
+	}
+	
+	50%, 100% {
+		opacity: 1;
+		z-index: 5;
+	}
+}
+
+#login-section .overlay-container {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+	z-index: 100;
+}
+
+#login-section .container.right-panel-active .overlay-container{
+	transform: translateX(-100%);
+}
+
+#login-section .overlay {
+	background: #97cd71;
+	background: -webkit-linear-gradient(to right, #35c4d2, #97cd71);
+	background: linear-gradient(to right, #35c4d2, #97cd71);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 0;
+	color: #606788;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
+  	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+#login-section .container.right-panel-active .overlay {
+  	transform: translateX(50%);
+}
+
+#login-section .overlay-panel {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 40px;
+	text-align: center;
+	top: 0;
+	height: 100%;
+	width: 50%;
+	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+#login-section .overlay-left {
+	transform: translateX(-20%);
+}
+
+#login-section .container.right-panel-active .overlay-left {
+	transform: translateX(0);
+}
+
+#login-section .overlay-right {
+	right: 0;
+	transform: translateX(0);
+}
+
+#login-section .container.right-panel-active .overlay-right {
+	transform: translateX(20%);
+}
+
+
+/*end of login section styles ///////////////////////////////////////////////////////////////*/
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    background-color: #040723;
+    grid-row: 3;
+    margin-top: 20px;      /* adds space */
+    border-top: 5px solid #111e48; /* sets color */
+}
