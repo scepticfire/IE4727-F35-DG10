@@ -18,11 +18,14 @@ document.addEventListener("DOMContentLoaded", function() {
     async function checkUsernameAvailability(username, timeoutMs = 8000) {
         if (!username) return { ok: false, status: 'empty' };
 
+        // resolve path relative to the page (pages/login.html -> ../scripts/check_username.php)
+        const url = new URL('../scripts/check_username.php', window.location.href).toString();
+
         const controller = new AbortController();
         const timer = setTimeout(() => controller.abort(), timeoutMs);
 
         try {
-            const resp = await fetch("scripts/check_username.php", {
+            const resp = await fetch(url, {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: "username=" + encodeURIComponent(username),
@@ -30,20 +33,18 @@ document.addEventListener("DOMContentLoaded", function() {
             });
 
             if (!resp.ok) {
-                console.error("check_username.php returned non-OK:", resp.status);
+                console.error("check_username.php returned non-OK:", resp.status, "url:", url);
                 return { ok: false, status: 'http_error' };
             }
 
             const contentType = resp.headers.get("content-type") || "";
             if (!contentType.includes("application/json")) {
-                console.error("check_username.php returned non-JSON response:", contentType);
                 const text = await resp.text();
-                console.error("response body:", text);
+                console.error("check_username.php returned non-JSON response:", contentType, text);
                 return { ok: false, status: 'bad_response' };
             }
 
             const data = await resp.json();
-            //expect { status: "taken" } or { status: "available" }
             return { ok: true, status: data.status };
         } catch (err) {
             if (err.name === 'AbortError') {
@@ -149,7 +150,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //submit form now that all validations passed
         form.removeEventListener("submit", handleSubmit);
-        form.submit();
+        // call native submit in case a control shadows form.submit
+        HTMLFormElement.prototype.submit.call(form);
     }
 
     form.addEventListener("submit", handleSubmit);

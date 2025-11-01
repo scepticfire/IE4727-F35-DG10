@@ -1,23 +1,39 @@
 <?php
 include "database_connect.php";
 
-$username = trim($_POST['username']);
-$password = trim($_POST['password']);
-$email = trim($_POST['email']);
+$username = isset($_POST['username']) ? trim($_POST['username']) : '';
+$password = isset($_POST['password']) ? trim($_POST['password']) : '';
+$email    = isset($_POST['email']) ? trim($_POST['email']) : '';
 
-$password = password_hash($password, PASSWORD_DEFAULT);
+if ($username === '' || $password === '' || $email === '') {
+    http_response_code(400);
+    echo "Missing required fields.";
+    exit;
+}
 
-//input data into database
-$query = "INSERT INTO registered_users (username, password, email)
-            VALUES ('$username', '$password', '$email')";
+$hash = password_hash($password, PASSWORD_DEFAULT);
 
-$result = $db->query($query);
+// use prepared statement to avoid SQL injection and handle errors safely
+$stmt = $db->prepare("INSERT INTO registered_users (username, password, email) VALUES (?, ?, ?)");
+if (!$stmt) {
+    http_response_code(500);
+    echo "Prepare failed: " . $db->error;
+    $db->close();
+    exit;
+}
 
-if(!$result)
-    echo"query failed";
-else
-    echo"Welcome, $username! Your account has been created successfully.";
+$stmt->bind_param("sss", $username, $hash, $email);
 
-$result->close();
+if (!$stmt->execute()) {
+    http_response_code(500);
+    echo "Execute failed: " . $stmt->error;
+    $stmt->close();
+    $db->close();
+    exit;
+}
+
+echo "Welcome, " . htmlspecialchars($username, ENT_QUOTES, 'UTF-8') . "! Your account has been created successfully.";
+
+$stmt->close();
 $db->close();
 ?>
