@@ -38,7 +38,7 @@
               sunt in culpa qui officia deserunt mollit anim id est laborum."
             </p>
       
-      <form method="post" action="" onsubmit="">
+      <form method="post" action="../scripts/insert_books.php" enctype="multipart/form-data">
         <label for="name">*Title:</label>
         <input type="text" name="name" required>
         
@@ -51,115 +51,118 @@
         <label for="description">*Description:</label>
         <textarea name="description" name="description" required></textarea>
 
+        <label for="price">*Price (SGD):</label>
+        <input type="number" name="price" min="0" required>
+
         <label>*Genre:</label>
 
         <div class="genre-buttons">
-           <input type="checkbox" id="action" name="genre" value="action">
+           <input type="checkbox" id="action" name="genre[]" value="action">
           <label for="action">Action</label>
 
-          <input type="checkbox" id="adventure" name="genre" value="adventure">
+          <input type="checkbox" id="adventure" name="genre[]" value="adventure">
           <label for="adventure">Adventure</label>
 
-          <input type="checkbox" id="autobiography" name="genre" value="autobiography">
+          <input type="checkbox" id="autobiography" name="genre[]" value="autobiography">
           <label for="autobiography">Autobiography</label>
 
-          <input type="checkbox" id="biography" name="genre" value="biography">
+          <input type="checkbox" id="biography" name="genre[]" value="biography">
           <label for="biography">Biography</label>
 
-          <input type="checkbox" id="children" name="genre" value="children">
+          <input type="checkbox" id="children" name="genre[]" value="children">
           <label for="children">Children</label>
 
-          <input type="checkbox" id="classics" name="genre" value="classics">
+          <input type="checkbox" id="classics" name="genre[]" value="classics">
           <label for="classics">Classics</label>
 
-          <input type="checkbox" id="comedy" name="genre" value="comedy">
+          <input type="checkbox" id="comedy" name="genre[]" value="comedy">
           <label for="comedy">Comedy</label>
 
-          <input type="checkbox" id="comingofage" name="genre" value="comingofage">
+          <input type="checkbox" id="comingofage" name="genre[]" value="comingofage">
           <label for="comingofage">Coming Of Age</label>
 
-          <input type="checkbox" id="contemporary" name="genre" value="contemporary">
+          <input type="checkbox" id="contemporary" name="genre[]" value="contemporary">
           <label for="contemporary">Contemporary</label>
 
-          <input type="checkbox" id="crime" name="genre" value="crime">
+          <input type="checkbox" id="crime" name="genre[]" value="crime">
           <label for="crime">Crime</label>
 
-          <input type="checkbox" id="drama" name="genre" value="drama">
+          <input type="checkbox" id="drama" name="genre[]" value="drama">
           <label for="drama">Drama</label>
 
-          <input type="checkbox" id="erotica" name="genre" value="erotica">
+          <input type="checkbox" id="erotica" name="genre[]" value="erotica">
           <label for="erotica">Erotica</label>
 
-          <input type="checkbox" id="fantasy" name="genre" value="fantasy">
+          <input type="checkbox" id="fantasy" name="genre[]" value="fantasy">
           <label for="fantasy">Fantasy</label>
 
-          <input type="checkbox" id="fiction" name="genre" value="fiction">
+          <input type="checkbox" id="fiction" name="genre[]" value="fiction">
           <label for="fiction">Fiction</label>
 
-          <input type="checkbox" id="gothic" name="genre" value="gothic">
+          <input type="checkbox" id="gothic" name="genre[]" value="gothic">
           <label for="gothic">Gothic</label>
 
-          <input type="checkbox" id="history" name="genre" value="history">
+          <input type="checkbox" id="history" name="genre[]" value="history">
           <label for="history">History</label>
 
-          <input type="checkbox" id="horror" name="genre" value="horror">
+          <input type="checkbox" id="horror" name="genre[]" value="horror">
           <label for="horror">Horror</label>
 
-          <input type="checkbox" id="memoir" name="genre" value="memoir">
+          <input type="checkbox" id="memoir" name="genre[]" value="memoir">
           <label for="memoir">Memoir</label>
 
-          <input type="checkbox" id="mystery" name="genre" value="mystery">
+          <input type="checkbox" id="mystery" name="genre[]" value="mystery">
           <label for="mystery">Mystery</label>
 
-          <input type="checkbox" id="nonfiction" name="genre" value="nonfiction">
+          <input type="checkbox" id="nonfiction" name="genre[]" value="nonfiction">
           <label for="nonfiction">Nonfiction</label>
 
-          <input type="checkbox" id="philosophy" name="genre" value="philosophy">
+          <input type="checkbox" id="philosophy" name="genre[]" value="philosophy">
           <label for="philosophy">Philosophy</label>
 
-          <input type="checkbox" id="poetry" name="genre" value="poetry">
+          <input type="checkbox" id="poetry" name="genre[]" value="poetry">
           <label for="poetry">Poetry</label>
 
-          <input type="checkbox" id="psychological" name="genre" value="psychological">
+          <input type="checkbox" id="psychological" name="genre[]" value="psychological">
           <label for="psychological">Psychological</label>
 
-          <input type="checkbox" id="romance" name="genre" value="romance">
+          <input type="checkbox" id="romance" name="genre[]" value="romance">
           <label for="romance">Romance</label>
 
-          <input type="checkbox" id="satire" name="genre" value="satire">
+          <input type="checkbox" id="satire" name="genre[]" value="satire">
           <label for="satire">Satire</label>
 
-          <input type="checkbox" id="science" name="genre" value="science">
+          <input type="checkbox" id="science" name="genre[]" value="science">
           <label for="science">Science</label>
 
-          <input type="checkbox" id="sciencefiction" name="genre" value="sciencefiction">
+          <input type="checkbox" id="sciencefiction" name="genre[]" value="sciencefiction">
           <label for="sciencefiction">Science Fiction</label>
 
-          <input type="checkbox" id="selfhelp" name="genre" value="selfhelp">
+          <input type="checkbox" id="selfhelp" name="genre[]" value="selfhelp">
           <label for="selfhelp">Self Help</label>
 
-          <input type="checkbox" id="shorts" name="genre" value="shorts">
+          <input type="checkbox" id="shorts" name="genre[]" value="shorts">
           <label for="shorts">Shorts</label>
 
-          <input type="checkbox" id="spirituality" name="genre" value="spirituality">
+          <input type="checkbox" id="spirituality" name="genre[]" value="spirituality">
           <label for="spirituality">Spirituality</label>
 
-          <input type="checkbox" id="survival" name="genre" value="survival">
+          <input type="checkbox" id="survival" name="genre[]" value="survival">
           <label for="survival">Survival</label>
 
-          <input type="checkbox" id="suspense" name="genre" value="suspense">
+          <input type="checkbox" id="suspense" name="genre[]" value="suspense">
           <label for="suspense">Suspense</label>
 
-          <input type="checkbox" id="thriller" name="genre" value="thriller">
+          <input type="checkbox" id="thriller" name="genre[]" value="thriller">
           <label for="thriller">Thriller</label>
 
-          <input type="checkbox" id="travel" name="genre" value="travel">
+          <input type="checkbox" id="travel" name="genre[]" value="travel">
           <label for="travel">Travel</label>
 
-          <input type="checkbox" id="western" name="genre" value="western">
+          <input type="checkbox" id="western" name="genre[]" value="western">
           <label for="western">Western</label>
 
-          <input type="checkbox" id="youngadult" name="genre" value="youngadult">
+          <input type="checkbox" id="youngadult" name="genre[]" value="youngadult">
           <label for="youngadult">Young Adult</label>
         </div>
 
@@ -179,5 +182,40 @@
         <p>&copy; 2025 My Website. All rights reserved.</p>
     </footer>
 <script src="../js/fileuploadstyling.js"></script>
+
+<script src="../js/fileuploadstyling.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const genreCheckboxes = document.querySelectorAll('input[name="genre[]"]');
+    const maxSelection = 5;
+    const message = document.getElementById('genre-limit-message');
+
+    function updateCheckboxStates() {
+      const checkedCount = document.querySelectorAll('input[name="genre[]"]:checked').length;
+
+      if (checkedCount >= maxSelection) {
+        genreCheckboxes.forEach(box => {
+          if (!box.checked) {
+            const linkedLabel = document.querySelector(`label[for="${box.id}"]`);
+            linkedLabel?.classList.add('blurred');
+            box.disabled = true;
+          }
+        });
+        message.textContent = `⚠️ You can only select up to ${maxSelection} genres.`;
+      } else {
+        genreCheckboxes.forEach(box => {
+          box.disabled = false;
+          const linkedLabel = document.querySelector(`label[for="${box.id}"]`);
+          linkedLabel?.classList.remove('blurred');
+        });
+        message.textContent = ""; // clear the warning when under the limit
+      }
+    }
+
+    genreCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', updateCheckboxStates);
+    });
+  });
+</script>
 </body>
 </html>

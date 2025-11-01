@@ -18,5 +18,6 @@ if(!$result)
 else
     echo"Welcome, $username! Your account has been created successfully.";
 
+$result->close();
 $db->close();
 ?>

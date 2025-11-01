@@ -248,3 +248,29 @@ footer {
     margin-top: 20px;      /* adds space */
     border-top: 5px solid #111e48; /* sets color */
 }
+
+.blurred {
+  position: relative;
+  opacity: 0.5;
+  filter: blur(1px) brightness(0.8);
+  cursor: not-allowed;
+  transition: all 0.3s ease;
+}
+
+.blurred::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(4px);
+  background: rgba(20, 20, 50, 0.35);
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.limit-warning {
+  color: #a8e612;
+  font-size: 0.9em;
+  margin-top: 8px;
+  text-shadow: 0 0 8px rgba(168, 230, 18, 0.5);
+  transition: opacity 0.3s ease;
+}
