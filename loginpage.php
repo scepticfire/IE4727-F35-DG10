@@ -1,5 +1,5 @@
 <?php
-include "database_connect.php";
+include "scripts/database_connect.php";
 
 session_start();
 
@@ -33,7 +33,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
   if (isset($_SESSION['valid_user']))
   {
     echo 'You are logged in as: '.$_SESSION['valid_user'].' <br />';
-    echo '<a href="logout.php">Log out</a><br />';
+    echo '<a href="logout_script.php">Log out</a><br />';
   }
   else
   {

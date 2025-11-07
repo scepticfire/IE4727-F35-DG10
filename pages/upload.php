@@ -1,5 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+session_start();
+$isLoggedIn = isset($_SESSION['username']);
+?>
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,15 +21,24 @@
         </div>
         <nav>
             <img src="../assets/images/home-svg.svg" alt="Home">
-            <a href="main.html">Home</a>
+            <a href="main.php">Home</a>
             <img src="../assets/images/books-svg.svg" alt="Books">
-            <a href="books.html">Books</a>
+            <a href="books.php">Books</a>
             <img src="../assets/images/upload-svg.svg" alt="Upload">
-            <a href="upload.html">Upload</a>
-            <img src="../assets/images/purchase-svg.svg" alt="Purchase">
-            <a href="purchase.html">Purchase</a>
-            <img src="../assets/images/sign_in-svg.svg" alt="Sign in">
-            <a href="login.html">Sign in</a>            
+            <a href="upload.php">Upload</a>
+            <img src="../assets/images/purchase-svg.svg" alt="Cart">
+            <a href="cart.php">Cart</a>
+            
+            <?php if ($isLoggedIn): ?>
+                <span class="welcome-text">Welcome: <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+                <div class="logout-container">
+                    <img src="../assets/images/sign_out-svg.svg" alt="Log out">
+                    <a href="../scripts/logout_script.php">Log out</a>
+                </div>
+            <?php else: ?>
+                <img src="../assets/images/sign_in-svg.svg" alt="Sign in">
+                <a href="login.php">Sign in</a>
+            <?php endif; ?>
         </nav>
     </header>
     
