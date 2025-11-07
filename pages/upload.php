@@ -24,22 +24,18 @@ $isLoggedIn = isset($_SESSION['username']);
             <a href="main.php">Home</a>
             <img src="../assets/images/books-svg.svg" alt="Books">
             <a href="books.php">Books</a>
-            <img src="../assets/images/upload-svg.svg" alt="Upload">
-            <a href="upload.php">Upload</a>
-            <img src="../assets/images/purchase-svg.svg" alt="Cart">
-            <a href="cart.php">Cart</a>
             
             <?php if ($isLoggedIn): ?>
-                <span class="welcome-text">Welcome: <?php echo htmlspecialchars($_SESSION['username']); ?></span>
-                <div class="logout-container">
-                    <img src="../assets/images/sign_out-svg.svg" alt="Log out">
-                    <a href="../scripts/logout_script.php">Log out</a>
-                </div>
+                <img src="../assets/images/upload-svg.svg" alt="Upload">
+                <a href="upload.php">Upload</a>
+                <img src="../assets/images/purchase-svg.svg" alt="Cart">
+                <a href="cart.php">Cart</a>
+                <img src="../assets/images/sign_in-svg.svg" alt="Sign out">
+                <a href="../scripts/logout_script.php">Sign out</a>
             <?php else: ?>
                 <img src="../assets/images/sign_in-svg.svg" alt="Sign in">
                 <a href="login.php">Sign in</a>
             <?php endif; ?>
-        </nav>
     </header>
     
     <main>
