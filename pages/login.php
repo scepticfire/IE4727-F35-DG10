@@ -1,5 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+session_start();
+
+// If already logged in, redirect to main page
+if (isset($_SESSION['username'])) {
+    header('Location: main.php');
+    exit();
+}
+?>
 
 <head>
   <meta charset="UTF-8">
@@ -21,16 +28,16 @@
     </div>
     <nav>
       <img src="../assets/images/home-svg.svg" alt="Home">
-      <a href="main.html">Home</a>
+      <a href="main.php">Home</a>
       <img src="../assets/images/books-svg.svg" alt="Books">
-      <a href="books.html">Books</a>
+      <a href="books.php">Books</a>
       <img src="../assets/images/upload-svg.svg" alt="Upload">
-      <a href="upload.html">Upload</a>
-      <img src="../assets/images/purchase-svg.svg" alt="Purchase">
-      <a href="purchase.html">Purchase</a>
+      <a href="upload.php">Upload</a>
+      <img src="../assets/images/purchase-svg.svg" alt="Cart">
+      <a href="cart.php">Cart</a>
       <img src="../assets/images/sign_in-svg.svg" alt="Sign in">
-      <a href="login.html">Sign in</a>
-    </nav>
+      <a href="login.php">Sign in</a>   
+</nav>
   </header>
 
 
@@ -49,11 +56,14 @@
         </form>
       </div>
       <div class="form-container sign-in-container">
-        <form action="#">
+        <form action="../scripts/login_script.php" method="post">
           <h1>Sign in</h1>
-          <input type="text" name="username" id="username" placeholder="Username">
-          <input type="password" placeholder="Password" />
-          <button>Sign In</button>
+          <?php if (isset($_SESSION['login_error'])): ?>
+            <div class="error"><?php echo $_SESSION['login_error']; unset($_SESSION['login_error']); ?></div>
+          <?php endif; ?>
+          <input type="text" name="username" placeholder="Username" required>
+          <input type="password" name="password" placeholder="Password" required>
+          <button type="submit">Sign In</button>
         </form>
       </div>
       <div class="overlay-container">

@@ -51,6 +51,8 @@ nav {
     font-size: 0; /* removes whitespace between inline elements */
     display: flex;
     align-items: center; /* vertically centers all items (which aligns them horizontally on the same line) */
+    gap: 15px;  /* Adds consistent spacing between all nav items */
+    justify-content: flex-start;
 }
 
 nav a,
@@ -163,4 +165,27 @@ main {
 #rightcolumn .content {
     width: 70%; /* 70% of the rightcolumn space */
     max-width: 1000px; /* optional: set a max width */
+}
+
+.welcome-text {
+    margin-left: auto; /* Pushes welcome text to the right */
+    color: #00ffff; /* Cyan color to match your theme */
+    font-family: 'Koh Santepheap', serif;
+    font-size: 16px;
+}
+
+.logout-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 20px;
+}
+
+.logout-container a {
+    color: #00ffff; /* Cyan color to match theme */
+    text-decoration: none;
+}
+
+.logout-container a:hover {
+    text-decoration: underline;
 }

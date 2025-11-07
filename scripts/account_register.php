@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "database_connect.php";
 
 $username = isset($_POST['username']) ? trim($_POST['username']) : '';
@@ -32,8 +33,13 @@ if (!$stmt->execute()) {
     exit;
 }
 
-echo "Welcome, " . htmlspecialchars($username, ENT_QUOTES, 'UTF-8') . "! Your account has been created successfully.";
+// Set session after successful registration
+$_SESSION['username'] = $username;
 
 $stmt->close();
 $db->close();
+
+// Redirect to main page
+header('Location: ../pages/main.php');
+exit();
 ?>
