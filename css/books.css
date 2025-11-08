@@ -17,7 +17,7 @@ header {
     color: white;
     padding: 20px;
     grid-row: 1;
-    margin-bottom: 3px;
+    margin-bottom: 20px;
     border-bottom: 5px solid #111e48;
     position: relative; /* important for absolute centering of nav */
 }
@@ -51,8 +51,7 @@ nav {
     font-size: 0; /* removes whitespace between inline elements */
     display: flex;
     align-items: center; /* vertically centers all items (which aligns them horizontally on the same line) */
-    gap: 15px;  /* Adds consistent spacing between all nav items */
-    justify-content: flex-start;
+
 }
 
 nav a,
@@ -98,7 +97,50 @@ nav a:not(:last-child)::after {
 /* Focus attributes - when you click into the search bar */
 .search-bar:focus {
     outline: none; /* Removes default browser outline */
-    transform: scale(1.1);
+    transform: scale(1.05);
+}
+
+/* Search Form */
+.search-tab form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-btn {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(102, 126, 234, 0.3);
+}
+
+.search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.5);
+}
+
+.clear-search {
+    padding: 10px 15px;
+    background-color: #1a1f3a;
+    color: #848ae0;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    border: 2px solid #848ae0;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.clear-search:hover {
+    background-color: #848ae0;
+    color: #040723;
+    transform: translateY(-2px);
 }
 
 main {
@@ -151,10 +193,16 @@ main {
     color: #a8e612; /* color when clicking link */
 }
 
+#leftcolumn .active-genre {
+    font-weight: bold;
+    color: #667eea;
+    transform: translateX(10px);
+}
+
 #rightcolumn {
     flex: 1;
     margin: 10px; /* Added margin all around */
-    background-color: #000000;
+    /* background-color: #000000; */
     color: white;
     padding: 10px;
     border-radius:5px;
@@ -163,8 +211,8 @@ main {
 }
 
 #rightcolumn .content {
-    width: 70%; /* 70% of the rightcolumn space */
-    max-width: 1000px; /* optional: set a max width */
+    width: 90%; 
+    /* max-width: 1000px; optional: set a max width */
 }
 
 .welcome-text {
@@ -187,5 +235,322 @@ main {
 }
 
 .logout-container a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+/* ============================================================================================================ */
+/* Books Grid */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5%;
+    padding: 5%;
+}
+
+.book-card {
+    background-color: #848ae0;
+    border: 1.5px solid #1d2bf4;
+    border-radius: 3px;     /* Add this - currently sharp corners */
+    padding: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.book-card:hover {
+    transform: scale(1.05);
+}
+
+.book-card img {
+    width: 40%;
+    height: 250px;
+    object-fit: contain;
+    float: left;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.no-image {
+    width: 100%;
+    height: 250px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-card h3 {
+    font-family: 'Koh Santepheap', serif;
+    font-weight: 400;  /* Regular */
+    margin: 1rem;
+    color: #111;
+}
+
+.book-card .author {
+    color: #a8e612;
+    font-style: italic;
+    font-size: 15px;
+}
+.book-card .description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-top: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* Card Genres */
+.card-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.card-genre-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: capitalize;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 30px 20px;
+}
+
+.pagination a,
+.pagination .current-page {
+    padding: 8px 14px;
+    border: none;
+    background: none;
+    color: #666;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+.pagination a:hover {
+    color: #667eea;
+}
+
+.pagination .current-page {
+    color: #667eea;
+    font-weight: bold;
+    border-bottom: 2px solid #667eea;
+}
+/* Modal Base */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 3% auto;
+    padding: 0;
+    width: 90%;
+    max-width: 1000px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 35px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+    z-index: 1001;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+/* Modal Layout */
+.modal-book-details {
+    display: flex;
+    padding: 30px;
+    gap: 30px;
+}
+
+.modal-left {
+    flex: 0 0 350px;
+}
+
+.modal-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Modal Image */
+.modal-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-no-image {
+    width: 100%;
+    height: 400px;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: #999;
+    font-size: 18px;
+}
+
+/* Modal Title & Author */
+.modal-book-details h2 {
+    margin: 0 0 15px 0;
+    font-size: 28px;
+    color: #222;
+    font-weight: 700;
+}
+
+.modal-author {
+    font-size: 18px;
+    color: #666;
+    font-style: italic;
+    margin: 0 0 20px 0;
+}
+
+/* Info Rows */
+.modal-info-row {
+    display: flex;
+    margin-bottom: 12px;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #555;
+    min-width: 100px;
+}
+
+.info-value {
+    color: #333;
+}
+
+.modal-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c7a2c;
+}
+
+/* Genres Section */
+.modal-genres {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.genre-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.genre-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: capitalize;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+}
+
+.genre-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Description */
+.modal-description {
+    margin-top: 25px;
+    flex: 1;
+}
+
+.modal-description h3 {
+    margin: 0 0 15px 0;
+    font-size: 20px;
+    color: #333;
+    font-weight: 600;
+}
+
+.modal-description p {
+    line-height: 1.7;
+    color: #555;
+    font-size: 15px;
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+    margin-top: 25px;
+    padding: 15px 30px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #555;
+}
+
+.login-prompt {
+    margin-top: 20px;
+    color: #666;
+    font-size: 15px;
+}
+
+.login-prompt a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-prompt a:hover {
     text-decoration: underline;
 }
