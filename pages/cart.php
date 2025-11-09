@@ -18,7 +18,7 @@ if (isset($_GET['empty'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Basic Webpage</title>
-    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../css/cart.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:wght@400;700&family=Koh+Santepheap:wght@100;300;400&display=swap" rel="stylesheet">
@@ -51,11 +51,14 @@ if (isset($_GET['empty'])) {
     
     <main>
       <h1>Your Shopping Cart </h1>
+      <table border="1">
         <thead>
             <tr>
                 <th>Book Name</th>
                 <th>Price</th>
             <tr>
+        </thead>
+       </table>
 
       </form>
     </main>
