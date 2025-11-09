@@ -69,5 +69,7 @@ $get_genre_id_stmt->close();
 $link_stmt->close();
 $db->close();
 
-echo "Book uploaded successfully!";
+// redirect back to upload page with a flag instead of echoing text
+header('Location: ../pages/upload.php?uploaded=1');
+exit();
 ?>

@@ -26,9 +26,25 @@ if ($genre_count_result && $genre_count_result->num_rows > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Basic Webpage</title>
     <link rel="stylesheet" href="../css/books.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:wght@400;700&family=Koh+Santepheap:wght@100;300;400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:wght@400;700&family=Koh+Santepheap:wght@100;300;400&display=swap" rel="stylesheet">
+    <style>
+    /* small success toast */
+    #successMessage{
+        display:none;
+        position:fixed;
+        top:20px;
+        right:20px;
+        background:#28a745;
+        color:#fff;
+        padding:10px 14px;
+        border-radius:6px;
+        box-shadow:0 3px 10px rgba(0,0,0,0.2);
+        z-index:1200;
+        font-weight:600;
+    }
+    </style>
 </head>
 <body>
     <header>
@@ -267,6 +283,7 @@ $query_string = !empty($params) ? '&' . implode('&', $params) : '';
     <footer>
         <p>&copy; 2025 My Website. All rights reserved.</p>
     </footer>
+    <div id="successMessage">Added to cart!</div>
     <script src="../js/books.js"></script>
 </body>
 </html>

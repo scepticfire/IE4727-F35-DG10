@@ -9,9 +9,25 @@ $isLoggedIn = isset($_SESSION['username']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Basic Webpage</title>
     <link rel="stylesheet" href="../css/upload.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:wght@400;700&family=Koh+Santepheap:wght@100;300;400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:wght@400;700&family=Koh+Santepheap:wght@100;300;400&display=swap" rel="stylesheet">
+    <style>
+      /* small success toast for upload page */
+      #uploadSuccess {
+        display: none;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #28a745;
+        color: #fff;
+        padding: 10px 14px;
+        border-radius: 6px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        z-index: 1200;
+        font-weight: 600;
+      }
+    </style>
 </head>
 <body>
     <header>
@@ -40,15 +56,7 @@ $isLoggedIn = isset($_SESSION['username']);
     
     <main>
       <h2>UPLOAD BOOKS</h2>
-      <p>Want to upload your own books?Fill out the form as necessary. Required fields are marked with an asterisk*</p>
-              <p>
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo cons
-             equat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-             dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
-            </p>
+      <p>Want to upload your own books? Fill out the form as necessary. Required fields are marked with an asterisk*</p>
       
       <form method="post" action="../scripts/insert_books.php" enctype="multipart/form-data">
         <label for="name">*Title:</label>
@@ -193,7 +201,32 @@ $isLoggedIn = isset($_SESSION['username']);
     <footer>
         <p>&copy; 2025 My Website. All rights reserved.</p>
     </footer>
-<script src="../js/fileuploadstyling.js"></script>
+
+    <!-- success toast element -->
+    <div id="uploadSuccess">Book uploaded successfully!</div>
+
+    <script>
+      (function(){
+        // show toast when ?uploaded=1 is present in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('uploaded') === '1') {
+          const msg = document.getElementById('uploadSuccess');
+          if (msg) {
+            msg.style.display = 'block';
+            // hide after 2 seconds
+            setTimeout(function(){
+              msg.style.display = 'none';
+              // remove query string to avoid showing again on refresh/back
+              if (history.replaceState) {
+                const url = new URL(window.location);
+                url.searchParams.delete('uploaded');
+                history.replaceState(null, '', url.toString());
+              }
+            }, 2000);
+          }
+        }
+      })();
+    </script>
 
 <script src="../js/fileuploadstyling.js"></script>
 <script>
