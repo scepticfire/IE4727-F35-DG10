@@ -14,21 +14,21 @@ body {
 
 header {
     display: flex;
-    align-items: center; /* vertically align items */
-    justify-content: center; /* center flex items as a group */
+    align-items: center; /*vertically align items*/
+    justify-content: center; /*center flex items as a group*/
     background-color: #040723;
     color: white;
     padding: 20px;
     grid-row: 1;
     margin-bottom: 20px;
     border-bottom: 5px solid #111e48;
-    position: relative; /* absolute centering of nav */
+    position: relative; /*absolute centering of nav*/
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    margin-right: auto; /* pushes nav to the center */
+    margin-right: auto; /*pushes nav to the center*/
 }
 
 .logo-icon {
@@ -41,7 +41,7 @@ header h1 {
     font-weight: 400;
     font-size: 3em;
     margin: 0;
-    margin-right: auto; /* pushes everything else to the right */
+    margin-right: auto; /*pushes everything else to the right*/
     color: #00c8cf;
 }
 
@@ -52,7 +52,7 @@ nav {
     transform: translateX(-50%);
     font-size: 0;
     display: flex;
-    align-items: center; /* vertically centers all items*/
+    align-items: center; /*vertically centers all items*/
 
 }
 
@@ -71,9 +71,8 @@ nav a:not(:last-child)::after {
     content: ' | ';
     margin: 0 10px; 
 }
-/* Login Section Styles ///////////////////////////////////////////////////////////////////////*/
 
-
+/*Login Section Styles*/
 #login-section {
     grid-row: 2;
     display: flex;
@@ -275,7 +274,7 @@ nav a:not(:last-child)::after {
 }
 
 
-/*end of login section styles ///////////////////////////////////////////////////////////////*/
+/*end of login section styles*/
 footer {
     text-align: center;
     padding: 20px;

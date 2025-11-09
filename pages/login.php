@@ -1,6 +1,6 @@
 <?php
 session_start();
-// If already logged in, redirect to main page
+//If already logged in, redirect to main page
 if (isset($_SESSION['username'])) {
     header('Location: main.php');
     exit();

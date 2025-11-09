@@ -1,7 +1,7 @@
 function openModal(bookId) {
     var modal = document.getElementById('bookModal');
     var modalBody = document.getElementById('modal-body');
-    // Show modal
+    //Show modal
     modal.style.display = 'block';
     modalBody.innerHTML = '<p>Loading...</p>';
     var xhr = new XMLHttpRequest();
@@ -40,7 +40,7 @@ function addToCart(bookId) {
         var modalBody = document.getElementById('modal-body');
         if (!modalBody) return;
 
-        // Expecting get_book.php to render <h2> for name and .modal-price for price
+        //Expecting get_book.php to render <h2> for name and .modal-price for price
         var titleEl = modalBody.querySelector('h2');
         var priceEl = modalBody.querySelector('.modal-price');
 
@@ -51,7 +51,7 @@ function addToCart(bookId) {
 
         var name = titleEl.textContent.trim();
         var priceText = priceEl.textContent.trim();
-        // Remove any non-digit except dot and minus
+        //Remove any non-digit except dot and minus
         var price = parseFloat(priceText.replace(/[^0-9.-]+/g, ''));
         if (isNaN(price)) price = 0;
 

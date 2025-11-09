@@ -4,7 +4,7 @@
 
     include('../scripts/database_connect.php');
 
-    // sidebar genre book count query
+    //sidebar genre book count query
     $genre_count_query = "
         SELECT g.genre_name, COUNT(DISTINCT bg.book_id) as book_count
         FROM genres g
@@ -131,33 +131,33 @@
     <div class="content">
 
         <?php
-                // Pagination settings
-                $books_per_page = 4;
+                //Pagination settings
+                $books_per_page = 6;
                 $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
                 $offset = ($current_page - 1) * $books_per_page;
 
-                // Build WHERE clause for search and genre
+                //Build WHERE clause for search and genre
                 $where_conditions = [];
 
-                // Handle search
+                //Handle search
                 if (isset($_GET['search']) && !empty($_GET['search'])) {
                     $search_term = $db->real_escape_string($_GET['search']);
                     $where_conditions[] = "b.name LIKE '%$search_term%'";
                 }
 
-                // Handle genre filter
+                //Handle genre filter
                 if (isset($_GET['genre']) && !empty($_GET['genre'])) {
                     $genre_filter = $db->real_escape_string($_GET['genre']);
                     $where_conditions[] = "g.genre_name = '$genre_filter'";
                 }
 
-                // Build WHERE clause
+                //Build WHERE clause
                 $where_clause = "";
                 if (!empty($where_conditions)) {
                     $where_clause = "WHERE " . implode(" AND ", $where_conditions);
                 }
 
-                // Get total number of books (with search filter)
+                //Get total number of books (with search filter)
                 $count_query = "
                     SELECT COUNT(DISTINCT b.book_id) as total 
                     FROM books b
@@ -169,7 +169,7 @@
                 $total_books = $count_result->fetch_assoc()['total'];
                 $total_pages = ceil($total_books / $books_per_page);
 
-                // Fetch books for current page (with search filter)
+                //Fetch books for current page (with search filter)
                 $query = "
                     SELECT 
                         b.book_id, 
@@ -228,7 +228,7 @@
     <div class="pagination">
 
     <?php 
-    // Build query parameters for pagination
+    //Build query parameters for pagination
     $params = [];
     if (isset($_GET['search'])) {
         $params[] = 'search=' . urlencode($_GET['search']);

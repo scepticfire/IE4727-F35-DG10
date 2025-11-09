@@ -2,7 +2,7 @@ let currentSlide = 0;
 const slides = document.querySelectorAll('.carousel-item');
 const totalSlides = slides.length;
 
-// Create dots
+//Create dots
 function createDots() {
     const dotsContainer = document.getElementById('carouselDots');
     for (let i = 0; i < totalSlides; i++) {
@@ -31,7 +31,7 @@ function goToSlide(index) {
     updateCarousel();
 }
 
-// Update carousel position
+//Update carousel position
 function updateCarousel() {
     const track = document.getElementById('carouselTrack');
     const offset = -currentSlide * 100;
@@ -53,10 +53,10 @@ function updateDots() {
 function autoPlayCarousel() {
     setInterval(function() {
         moveCarousel(1);
-    }, 5000);// Auto-play carousel every 5 seconds
+    }, 5000);//Auto-play carousel every 5 seconds
 }
 
-// Initialize
+//Initialize
 if (totalSlides > 0) {
     createDots();
     autoPlayCarousel();

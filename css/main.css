@@ -34,21 +34,21 @@ body {
 
 header {
     display: flex;
-    align-items: center; /* vertically align items */
-    justify-content: center; /* center flex items as a group */
+    align-items: center; /*vertically align items*/
+    justify-content: center; /*center flex items as a group*/
     background-color: #040723;
     color: white;
     padding: 20px;
     grid-row: 1;
     margin-bottom: 20px;
     border-bottom: 5px solid #111e48;
-    position: relative; /* important for absolute centering of nav */
+    position: relative; /*important for absolute centering of nav*/
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    margin-right: auto; /* pushes nav to the center */
+    margin-right: auto; /*pushes nav to the center*/
 }
 
 .logo-icon {
@@ -61,7 +61,7 @@ header h1 {
     font-weight: 400;
     font-size: 3em;
     margin: 0;
-    margin-right: auto; /* pushes everything else to the right */
+    margin-right: auto; /*pushes everything else to the right*/
     color: #00c8cf;
 }
 
@@ -72,7 +72,7 @@ nav {
     transform: translateX(-50%);
     font-size: 0; 
     display: flex;
-    align-items: center; /* vertically centers all items*/
+    align-items: center; /*vertically centers all items*/
 
 }
 
@@ -91,8 +91,7 @@ nav a:not(:last-child)::after {
     content: ' | ';
     margin: 0 10px; 
 }
-/* ABOVE THIS LINE, ALL FILES ARE THE SAME //////////////////////////////////////////////////////////////////*/
-
+/*ABOVE THIS LINE, ALL FILES ARE THE SAME*/
 
 
 main {
@@ -128,7 +127,7 @@ footer {
     border-top: 5px solid #111e48; 
 }
 
-/* Carousel Section */
+/*Carousel Section*/
 .carousel-section {
     padding:0px;
     max-width: 1000px;
@@ -206,7 +205,7 @@ footer {
     margin: 0 auto;
 }
 
-/* Override main h3 styling specifically for carousel book titles */
+/*Override main h3 styling specifically for carousel book titles*/
 .carousel-book h3 {
     font-family: "Bona Nova SC", serif !important;
     margin: 15px 0 8px 0;
@@ -224,7 +223,7 @@ footer {
     margin: 0;
 }
 
-/* Carousel Buttons*/
+/*Carousel Buttons*/
 .carousel-btn {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -251,7 +250,7 @@ footer {
     transform: scale(0.95);
 }
 
-/* Carousel Dots */
+/*Carousel Dots*/
 .carousel-dots {
     text-align: center;
     padding: 30px 0 10px 0;

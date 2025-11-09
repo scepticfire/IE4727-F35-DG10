@@ -6,7 +6,7 @@ include('database_connect.php');
 if (isset($_GET['book_id'])) {
     $book_id = (int)$_GET['book_id'];
     
-    // Query to get book details WITH genres
+    //Query to get book details WITH genres
     $query = "
         SELECT 
             b.book_id, 
@@ -29,7 +29,7 @@ if (isset($_GET['book_id'])) {
     if ($result && $result->num_rows > 0) {
         $book = $result->fetch_assoc();
         
-        // Split genres into an array for individual styling
+        //Split genres into an array for individual styling
         $genres_array = !empty($book['genres']) ? explode(', ', $book['genres']) : [];
         ?>
         
