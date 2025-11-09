@@ -41,40 +41,62 @@ $isLoggedIn = isset($_SESSION['username']);
         </nav>
     </header>
     
-    <main>
-        <div class="content">
-        <h3>RECCOMENDED</h3>
-        <div  style="color:#606788">     
-            <p> Text will be this color: #606788</p>
-        <p>
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo cons
-             equat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-             dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
-            </p>
-                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo cons
-             equat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-             dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
-            </p>
-                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo cons
-             equat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-             dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
-        </p>
+<main>
+    <?php
+    // Include database connection
+    include('../scripts/database_connect.php');
+    
+    // Get books for carousel
+    $carousel_query = "SELECT book_id, name, author, image_path FROM books ORDER BY book_id DESC LIMIT 5";
+    $carousel_result = $db->query($carousel_query);
+    $carousel_books = [];
+    if ($carousel_result && $carousel_result->num_rows > 0) {
+        while ($book = $carousel_result->fetch_assoc()) {
+            $carousel_books[] = $book;
+        }
+    }
+    ?>
+    
+    <!-- Carousel Section -->
+    <div class="carousel-section">
+        <h2>Featured Books</h2>
+        <div class="carousel-container">
+            <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+            
+            <div class="carousel-wrapper">
+                <div class="carousel-track" id="carouselTrack">
+                    <?php if (!empty($carousel_books)): ?>
+                        <?php foreach ($carousel_books as $book): ?>
+                            <div class="carousel-item">
+                                <div class="carousel-book" onclick="window.location.href='books.php'">
+                                    <?php if ($book['image_path']): ?>
+                                        <img src="<?php echo htmlspecialchars($book['image_path']); ?>" alt="<?php echo htmlspecialchars($book['name']); ?>">
+                                    <?php else: ?>
+                                        <div class="carousel-no-image">No Image</div>
+                                    <?php endif; ?>
+                                    <h3><?php echo htmlspecialchars($book['name']); ?></h3>
+                                    <p class="carousel-author">by <?php echo htmlspecialchars($book['author']); ?></p>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="carousel-item">
+                            <p style="color: #848ae0;">No books available</p>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+            
+            <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
         </div>
-        
-        </div>
-    </main>
+        <div class="carousel-dots" id="carouselDots"></div>
+    </div>
+</main>
+</div>
     
     <footer>
         <p>&copy; 2025 My Website. All rights reserved.</p>
     </footer>
+    <script src="../js/carousel.js"></script>
 </body>
 </html>
