@@ -14,7 +14,7 @@ if ($username === '' || $password === '' || $email === '') {
 
 $hash = password_hash($password, PASSWORD_DEFAULT);
 
-// use prepared statement to avoid SQL injection and handle errors safely
+//make use of prepared statement to avoid SQL injections & handle errors
 $stmt = $db->prepare("INSERT INTO registered_users (username, password, email) VALUES (?, ?, ?)");
 if (!$stmt) {
     http_response_code(500);
@@ -33,13 +33,13 @@ if (!$stmt->execute()) {
     exit;
 }
 
-// Set session after successful registration
+//sets session and username after registration
 $_SESSION['username'] = $username;
 
 $stmt->close();
 $db->close();
 
-// Redirect to main page
+//goes to main page
 header('Location: ../pages/main.php');
 exit();
 ?>

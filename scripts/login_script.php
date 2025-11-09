@@ -2,7 +2,6 @@
 session_start();
 include "database_connect.php";
 
-// Sanitize inputs
 $username = isset($_POST['username']) ? trim($_POST['username']) : '';
 $password = isset($_POST['password']) ? trim($_POST['password']) : '';
 
@@ -13,7 +12,7 @@ if ($username === '' || $password === '') {
 }
 
 try {
-    // Get user data with prepared statement
+    //get user data with prepared statement
     $stmt = $db->prepare("SELECT username, password FROM registered_users WHERE username = ? LIMIT 1");
     if (!$stmt) {
         throw new Exception("Database prepare failed: " . $db->error);
@@ -27,16 +26,16 @@ try {
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
 
-    // Verify credentials
+    //verify username & password
     if ($user && password_verify($password, $user['password'])) {
-        // Login successful
+        //sucessful login
         $_SESSION['username'] = $user['username'];
         $stmt->close();
         $db->close();
         header('Location: ../pages/main.php');
         exit();
     } else {
-        // Login failed
+        //failed login
         $_SESSION['login_error'] = "Invalid username or password.";
         header('Location: ../pages/login.php');
         exit();

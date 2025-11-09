@@ -7,7 +7,7 @@ $isLoggedIn = isset($_SESSION['username']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Basic Webpage</title>
+    <title>Upload Book</title>
     <link rel="stylesheet" href="../css/upload.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -199,7 +199,7 @@ $isLoggedIn = isset($_SESSION['username']);
     </main>
     
     <footer>
-        <p>&copy; 2025 My Website. All rights reserved.</p>
+        <p>&copy; 2025 OpenTome. All rights reserved.</p>
     </footer>
 
     <!-- success toast element -->

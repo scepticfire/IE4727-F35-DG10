@@ -78,7 +78,7 @@ if (isset($_SESSION['username'])) {
     </div>
 
     <footer>
-        <p>&copy; 2025 My Website. All rights reserved.</p>
+        <p>&copy; 2025 OpenTome. All rights reserved.</p>
     </footer>
     <script src="../js/login.js"></script>
     <script src="../js/form_validation.js"></script>
