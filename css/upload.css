@@ -11,21 +11,21 @@ body {
 
 header {
     display: flex;
-    align-items: center; /* vertically align items */
-    justify-content: center; /* center flex items as a group */
+    align-items: center; /*vertically align items*/
+    justify-content: center; /*center flex items as a group*/
     background-color: #040723;
     color: white;
     padding: 20px;
     grid-row: 1;
     margin-bottom: 20px;
     border-bottom: 5px solid #111e48;
-    position: relative; /* absolute centering of nav */
+    position: relative; /*absolute centering of nav*/
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    margin-right: auto; /* pushes nav to the center */
+    margin-right: auto; /*pushes nav to the center*/
 }
 
 .logo-icon {
@@ -38,7 +38,7 @@ header h1 {
     font-weight: 400;
     font-size: 3em;
     margin: 0;
-    margin-right: auto; /* pushes everything else to the right */
+    margin-right: auto; /*pushes everything else to the right*/
     color: #00c8cf;
 }
 
@@ -48,7 +48,7 @@ nav {
     transform: translateX(-50%);
     font-size: 0; 
     display: flex;
-    align-items: center; /* vertically centers all items*/
+    align-items: center; /*vertically centers all items*/
 
 }
 
@@ -85,7 +85,7 @@ main h2 {
 
 main form {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* label column auto-sizes, input takes rest */
+    grid-template-columns: 1fr 1fr; /*label column auto-sizes, input takes rest*/
     gap: 40px 20px; 
     max-width: 100%;
     color: #606788;
@@ -129,20 +129,20 @@ main form textarea:focus {
 }
 
 
-/* Make genre section span full width */
+/*Make genre section span full width*/
 main form label[for="genre-label"] {
-    grid-column: 1 / -1; /* spans both columns */
+    grid-column: 1 / -1; /*spans both columns*/
     text-align: left;
 }
 
 main form .genre-buttons {
     grid-column: 1 / -1; 
     display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 6 columns */
+    grid-template-columns: repeat(6, 1fr); /*6 columns*/
     gap: 10px;
 }
 
-/* Hide the actual checkbox */
+/*Hide the actual checkbox*/
 .genre-buttons input[type="checkbox"] {
     display: none;
 }
@@ -169,7 +169,7 @@ main form .genre-buttons {
     border-color: #a8e612;
 }
 
-/* Container for buttons */
+/*Container for buttons*/
 main form .button-container {
     grid-column: 1 / -1; 
     display: flex;
@@ -208,7 +208,7 @@ main form input[type="submit"]:hover {
     transform: scale(1.1);
 }
 
-/* Hide the default file input */
+/*Hide the default file input*/
 input[type="file"] {
   display: none;
 }

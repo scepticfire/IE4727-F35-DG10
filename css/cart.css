@@ -11,8 +11,8 @@ body {
 
 header {
     display: flex;
-    align-items: center; /* vertically align items */
-    justify-content: center; /* center flex items as a group */
+    align-items: center; /*vertically align items*/
+    justify-content: center; /*center flex items as a group*/
     background-color: #040723;
     color: white;
     padding: 20px;
@@ -39,7 +39,7 @@ header h1 {
     font-weight: 400;
     font-size: 3em;
     margin: 0;
-    margin-right: auto; /* pushes everything else to the right */
+    margin-right: auto; /*pushes everything else to the right*/
     color: #00c8cf;
 }
 
@@ -48,9 +48,9 @@ nav {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 0; /* removes whitespace between inline elements */
+    font-size: 0; /*removes whitespace between inline elements*/
     display: flex;
-    align-items: center; /*  aligns them horizontally on the same line */
+    align-items: center; /*aligns them horizontally on the same line*/
 
 }
 
@@ -69,7 +69,7 @@ nav a:not(:last-child)::after {
     content: ' | ';
     margin: 0 10px; 
 }
-/* ABOVE THIS LINE, ALL FILES ARE THE SAME //////////////////////////////////////////////////////////////////*/
+/*ABOVE THIS LINE, ALL FILES ARE THE SAME //////////////////////////////////////////////////////////////////*/
 
 main {
     color:white;
@@ -88,7 +88,7 @@ main h2 {
 
 main form {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* label column auto-sizes, input takes rest */
+    grid-template-columns: 1fr 1fr; /*label column auto-sizes, input takes rest*/
     gap: 40px 20px; 
     max-width: 100%;
     color: #606788;
@@ -96,7 +96,7 @@ main form {
 }
 
 main form label {
-    text-align: left; /* aligns label text to the right */
+    text-align: left; /*aligns label text to the right*/
 }
 
 main form input[type="text"],
@@ -133,11 +133,11 @@ main form textarea:focus {
     border-radius: 10px;
 }
 
-/* Container for buttons */
+/*Container for buttons*/
 main form .button-container {
-    grid-column: 1 / -1; /* span both columns */
+    grid-column: 1 / -1; /*span both columns*/
     display: flex;
-    justify-content: center; /* center the buttons */
+    justify-content: center; /*center the buttons*/
     gap: 20px; 
     margin-top: 20px;
 }
@@ -205,7 +205,7 @@ tbody td {
     color: #c7deea; 
 }
 
-/* Cart action buttons */
+/*Cart action buttons*/
 .cart-actions {
   display: flex;
   gap: 24px;
@@ -237,7 +237,7 @@ tbody td {
   box-shadow: 0 6px 12px rgba(6,22,34,0.12);
 }
 
-/*empty cart button */
+/*empty cart button*/
 .btn-empty {
   background: linear-gradient(180deg,#ffdede 0%, #ffc4c4 100%);
   border: 1px solid rgba(220,20,60,0.15);

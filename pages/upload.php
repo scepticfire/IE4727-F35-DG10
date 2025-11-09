@@ -206,16 +206,16 @@ $isLoggedIn = isset($_SESSION['username']);
 
     <script>
       (function(){
-        // show toast when ?uploaded=1 is present in URL
+        //show toast when ?uploaded=1 is present in URL
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('uploaded') === '1') {
           const msg = document.getElementById('uploadSuccess');
           if (msg) {
             msg.style.display = 'block';
-            // hide after 2 seconds
+            //hide after 2 seconds
             setTimeout(function(){
               msg.style.display = 'none';
-              // remove query string to avoid showing again on refresh/back
+              //remove query string to avoid showing again on refresh/back
               if (history.replaceState) {
                 const url = new URL(window.location);
                 url.searchParams.delete('uploaded');
@@ -252,7 +252,7 @@ $isLoggedIn = isset($_SESSION['username']);
           const linkedLabel = document.querySelector(`label[for="${box.id}"]`);
           linkedLabel?.classList.remove('blurred');
         });
-        message.textContent = ""; // clear the warning when under the limit
+        message.textContent = ""; //clear the warning when under the limit
       }
     }
 
