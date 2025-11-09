@@ -1,24 +1,23 @@
 <?php
-session_start();
-$isLoggedIn = isset($_SESSION['username']);
+    session_start();
+    $isLoggedIn = isset($_SESSION['username']);
 
-// Include database connection and get genre counts
-include('../scripts/database_connect.php');
+    include('../scripts/database_connect.php');
 
-// Get book count for each genre
-$genre_count_query = "
-    SELECT g.genre_name, COUNT(DISTINCT bg.book_id) as book_count
-    FROM genres g
-    LEFT JOIN book_genres bg ON g.genre_id = bg.genre_id
-    GROUP BY g.genre_id, g.genre_name
-";
-$genre_count_result = $db->query($genre_count_query);
-$genre_counts = [];
-if ($genre_count_result && $genre_count_result->num_rows > 0) {
-    while ($row = $genre_count_result->fetch_assoc()) {
-        $genre_counts[$row['genre_name']] = $row['book_count'];
+    // sidebar genre book count query
+    $genre_count_query = "
+        SELECT g.genre_name, COUNT(DISTINCT bg.book_id) as book_count
+        FROM genres g
+        LEFT JOIN book_genres bg ON g.genre_id = bg.genre_id
+        GROUP BY g.genre_id, g.genre_name
+    ";
+    $genre_count_result = $db->query($genre_count_query);
+    $genre_counts = [];
+    if ($genre_count_result && $genre_count_result->num_rows > 0) {
+        while ($row = $genre_count_result->fetch_assoc()) {
+            $genre_counts[$row['genre_name']] = $row['book_count'];
+        }
     }
-}
 ?>
 <html>
 <head>
@@ -30,7 +29,6 @@ if ($genre_count_result && $genre_count_result->num_rows > 0) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:wght@400;700&family=Koh+Santepheap:wght@100;300;400&display=swap" rel="stylesheet">
     <style>
-    /* small success toast */
     #successMessage{
         display:none;
         position:fixed;
@@ -72,17 +70,20 @@ if ($genre_count_result && $genre_count_result->num_rows > 0) {
         </nav>
     </header>
 
-    <div class="search-tab">
-    <form method="GET" action="books.php">
-        <input type="text" name="search" class="search-bar" placeholder="Search for books..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
-        <button type="submit" class="search-btn">Search</button>
-        <?php if (isset($_GET['search'])): ?>
-            <a href="books.php" class="clear-search">Clear</a>
-        <?php endif; ?>
-    </form>
-</div>
 
-    <main>
+
+   
+    <div class="search-tab">
+        <form method="GET" action="books.php">
+            <input type="text" name="search" class="search-bar" placeholder="Search for books..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+            <button type="submit" class="search-btn">Search</button>
+            <?php if (isset($_GET['search'])): ?>
+                <a href="books.php" class="clear-search">Clear</a>
+            <?php endif; ?>
+        </form>
+    </div>
+
+     <main>
         
 <div id="leftcolumn">
     <h2>Genres</h2>
@@ -125,75 +126,67 @@ if ($genre_count_result && $genre_count_result->num_rows > 0) {
         <li><a href="?genre=western" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'western') ? 'class="active-genre"' : ''; ?>>Western <span class="genre-count">(<?php echo isset($genre_counts['western']) ? $genre_counts['western'] : 0; ?>)</span></a></li>
     </ul>
 </div>
-        <div id="rightcolumn">
-            <div class="content">
+        
+<div id="rightcolumn">
+    <div class="content">
 
+        <?php
+                // Pagination settings
+                $books_per_page = 4;
+                $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+                $offset = ($current_page - 1) * $books_per_page;
 
+                // Build WHERE clause for search and genre
+                $where_conditions = [];
 
+                // Handle search
+                if (isset($_GET['search']) && !empty($_GET['search'])) {
+                    $search_term = $db->real_escape_string($_GET['search']);
+                    $where_conditions[] = "b.name LIKE '%$search_term%'";
+                }
 
+                // Handle genre filter
+                if (isset($_GET['genre']) && !empty($_GET['genre'])) {
+                    $genre_filter = $db->real_escape_string($_GET['genre']);
+                    $where_conditions[] = "g.genre_name = '$genre_filter'";
+                }
 
+                // Build WHERE clause
+                $where_clause = "";
+                if (!empty($where_conditions)) {
+                    $where_clause = "WHERE " . implode(" AND ", $where_conditions);
+                }
 
+                // Get total number of books (with search filter)
+                $count_query = "
+                    SELECT COUNT(DISTINCT b.book_id) as total 
+                    FROM books b
+                    LEFT JOIN book_genres bg ON b.book_id = bg.book_id
+                    LEFT JOIN genres g ON bg.genre_id = g.genre_id
+                    $where_clause
+                ";
+                $count_result = $db->query($count_query);
+                $total_books = $count_result->fetch_assoc()['total'];
+                $total_pages = ceil($total_books / $books_per_page);
 
-              <?php
-// Include database connection
-include('../scripts/database_connect.php');
-
-// Pagination settings
-$books_per_page = 4;
-$current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$offset = ($current_page - 1) * $books_per_page;
-
-// Build WHERE clause for search and genre
-$where_conditions = [];
-
-// Handle search
-if (isset($_GET['search']) && !empty($_GET['search'])) {
-    $search_term = $db->real_escape_string($_GET['search']);
-    $where_conditions[] = "b.name LIKE '%$search_term%'";
-}
-
-// Handle genre filter
-if (isset($_GET['genre']) && !empty($_GET['genre'])) {
-    $genre_filter = $db->real_escape_string($_GET['genre']);
-    $where_conditions[] = "g.genre_name = '$genre_filter'";
-}
-
-// Build WHERE clause
-$where_clause = "";
-if (!empty($where_conditions)) {
-    $where_clause = "WHERE " . implode(" AND ", $where_conditions);
-}
-
-// Get total number of books (with search filter)
-$count_query = "
-    SELECT COUNT(DISTINCT b.book_id) as total 
-    FROM books b
-    LEFT JOIN book_genres bg ON b.book_id = bg.book_id
-    LEFT JOIN genres g ON bg.genre_id = g.genre_id
-    $where_clause
-";
-$count_result = $db->query($count_query);
-$total_books = $count_result->fetch_assoc()['total'];
-$total_pages = ceil($total_books / $books_per_page);
-
-// Fetch books for current page (with search filter)
-$query = "
-    SELECT 
-        b.book_id, 
-        b.name, 
-        b.author, 
-        b.description, 
-        b.image_path,
-        GROUP_CONCAT(g.genre_name SEPARATOR ', ') as genres
-    FROM books b
-    LEFT JOIN book_genres bg ON b.book_id = bg.book_id
-    LEFT JOIN genres g ON bg.genre_id = g.genre_id
-    $where_clause
-    GROUP BY b.book_id
-    LIMIT $books_per_page OFFSET $offset
-";
-$result = $db->query($query);
-?>
+                // Fetch books for current page (with search filter)
+                $query = "
+                    SELECT 
+                        b.book_id, 
+                        b.name, 
+                        b.author, 
+                        b.description, 
+                        b.image_path,
+                        GROUP_CONCAT(g.genre_name SEPARATOR ', ') as genres
+                    FROM books b
+                    LEFT JOIN book_genres bg ON b.book_id = bg.book_id
+                    LEFT JOIN genres g ON bg.genre_id = g.genre_id
+                    $where_clause
+                    GROUP BY b.book_id
+                    LIMIT $books_per_page OFFSET $offset
+                ";
+                $result = $db->query($query);
+        ?>
     
     <div class="books-grid">
         <?php
@@ -231,19 +224,20 @@ $result = $db->query($query);
     </div>
     
     <!-- Pagination -->
-<?php if ($total_pages > 1): ?>
-<div class="pagination">
+    <?php if ($total_pages > 1): ?>
+    <div class="pagination">
+
     <?php 
-// Build query parameters for pagination
-$params = [];
-if (isset($_GET['search'])) {
-    $params[] = 'search=' . urlencode($_GET['search']);
-}
-if (isset($_GET['genre'])) {
-    $params[] = 'genre=' . urlencode($_GET['genre']);
-}
-$query_string = !empty($params) ? '&' . implode('&', $params) : '';
-?>
+    // Build query parameters for pagination
+    $params = [];
+    if (isset($_GET['search'])) {
+        $params[] = 'search=' . urlencode($_GET['search']);
+    }
+    if (isset($_GET['genre'])) {
+        $params[] = 'genre=' . urlencode($_GET['genre']);
+    }
+    $query_string = !empty($params) ? '&' . implode('&', $params) : '';
+    ?>
     
     <?php if ($current_page > 1): ?>
         <a href="?page=<?php echo $current_page - 1; ?><?php echo $query_string; ?>">Previous</a>
@@ -260,8 +254,8 @@ $query_string = !empty($params) ? '&' . implode('&', $params) : '';
     <?php if ($current_page < $total_pages): ?>
         <a href="?page=<?php echo $current_page + 1; ?><?php echo $query_string; ?>">Next</a>
     <?php endif; ?>
-</div>
-<?php endif; ?>
+    </div>
+    <?php endif; ?>
     
     <!-- Modal -->
     <div id="bookModal" class="modal">
@@ -273,17 +267,14 @@ $query_string = !empty($params) ? '&' . implode('&', $params) : '';
         </div>
     </div>
 </div>
-
-
-
              </div>
         </div>
-    </main>
-    
+</main>    
+<div id="successMessage">Added to cart!</div>
     <footer>
         <p>&copy; 2025 OpenTome. All rights reserved.</p>
     </footer>
-    <div id="successMessage">Added to cart!</div>
+    
     <script src="../js/books.js"></script>
 </body>
 </html>

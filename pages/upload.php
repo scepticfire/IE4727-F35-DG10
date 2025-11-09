@@ -13,7 +13,6 @@ $isLoggedIn = isset($_SESSION['username']);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:wght@400;700&family=Koh+Santepheap:wght@100;300;400&display=swap" rel="stylesheet">
     <style>
-      /* small success toast for upload page */
       #uploadSuccess {
         display: none;
         position: fixed;
