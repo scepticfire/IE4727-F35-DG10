@@ -1,6 +1,24 @@
 <?php
 session_start();
 $isLoggedIn = isset($_SESSION['username']);
+
+// Include database connection and get genre counts
+include('../scripts/database_connect.php');
+
+// Get book count for each genre
+$genre_count_query = "
+    SELECT g.genre_name, COUNT(DISTINCT bg.book_id) as book_count
+    FROM genres g
+    LEFT JOIN book_genres bg ON g.genre_id = bg.genre_id
+    GROUP BY g.genre_id, g.genre_name
+";
+$genre_count_result = $db->query($genre_count_query);
+$genre_counts = [];
+if ($genre_count_result && $genre_count_result->num_rows > 0) {
+    while ($row = $genre_count_result->fetch_assoc()) {
+        $genre_counts[$row['genre_name']] = $row['book_count'];
+    }
+}
 ?>
 <html>
 <head>
@@ -54,41 +72,41 @@ $isLoggedIn = isset($_SESSION['username']);
     <h2>Genres</h2>
     <ul>
         <li><a href="books.php" <?php echo !isset($_GET['genre']) ? 'class="active-genre"' : ''; ?>>All Books</a></li>
-        <li><a href="?genre=action" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'action') ? 'class="active-genre"' : ''; ?>>Action</a></li>
-        <li><a href="?genre=adventure" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'adventure') ? 'class="active-genre"' : ''; ?>>Adventure</a></li>
-        <li><a href="?genre=autobiography" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'autobiography') ? 'class="active-genre"' : ''; ?>>Autobiography</a></li>
-        <li><a href="?genre=biography" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'biography') ? 'class="active-genre"' : ''; ?>>Biography</a></li>
-        <li><a href="?genre=children" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'children') ? 'class="active-genre"' : ''; ?>>Children</a></li>
-        <li><a href="?genre=classics" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'classics') ? 'class="active-genre"' : ''; ?>>Classics</a></li>
-        <li><a href="?genre=comedy" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'comedy') ? 'class="active-genre"' : ''; ?>>Comedy</a></li>
-        <li><a href="?genre=comingofage" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'comingofage') ? 'class="active-genre"' : ''; ?>>Coming Of Age</a></li>
-        <li><a href="?genre=contemporary" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'contemporary') ? 'class="active-genre"' : ''; ?>>Contemporary</a></li>
-        <li><a href="?genre=crime" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'crime') ? 'class="active-genre"' : ''; ?>>Crime</a></li>
-        <li><a href="?genre=drama" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'drama') ? 'class="active-genre"' : ''; ?>>Drama</a></li>
-        <li><a href="?genre=erotica" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'erotica') ? 'class="active-genre"' : ''; ?>>Erotica</a></li>
-        <li><a href="?genre=fantasy" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'fantasy') ? 'class="active-genre"' : ''; ?>>Fantasy</a></li>
-        <li><a href="?genre=fiction" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'fiction') ? 'class="active-genre"' : ''; ?>>Fiction</a></li>
-        <li><a href="?genre=gothic" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'gothic') ? 'class="active-genre"' : ''; ?>>Gothic</a></li>
-        <li><a href="?genre=history" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'history') ? 'class="active-genre"' : ''; ?>>History</a></li>
-        <li><a href="?genre=horror" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'horror') ? 'class="active-genre"' : ''; ?>>Horror</a></li>
-        <li><a href="?genre=memoir" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'memoir') ? 'class="active-genre"' : ''; ?>>Memoir</a></li>
-        <li><a href="?genre=mystery" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'mystery') ? 'class="active-genre"' : ''; ?>>Mystery</a></li>
-        <li><a href="?genre=nonfiction" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'nonfiction') ? 'class="active-genre"' : ''; ?>>Nonfiction</a></li>
-        <li><a href="?genre=philosophy" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'philosophy') ? 'class="active-genre"' : ''; ?>>Philosophy</a></li>
-        <li><a href="?genre=poetry" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'poetry') ? 'class="active-genre"' : ''; ?>>Poetry</a></li>
-        <li><a href="?genre=psychological" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'psychological') ? 'class="active-genre"' : ''; ?>>Psychological</a></li>
-        <li><a href="?genre=romance" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'romance') ? 'class="active-genre"' : ''; ?>>Romance</a></li>
-        <li><a href="?genre=satire" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'satire') ? 'class="active-genre"' : ''; ?>>Satire</a></li>
-        <li><a href="?genre=science" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'science') ? 'class="active-genre"' : ''; ?>>Science</a></li>
-        <li><a href="?genre=sciencefiction" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'sciencefiction') ? 'class="active-genre"' : ''; ?>>Science Fiction</a></li>
-        <li><a href="?genre=selfhelp" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'selfhelp') ? 'class="active-genre"' : ''; ?>>Self Help</a></li>
-        <li><a href="?genre=shorts" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'shorts') ? 'class="active-genre"' : ''; ?>>Shorts</a></li>
-        <li><a href="?genre=spirituality" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'spirituality') ? 'class="active-genre"' : ''; ?>>Spirituality</a></li>
-        <li><a href="?genre=survival" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'survival') ? 'class="active-genre"' : ''; ?>>Survival</a></li>
-        <li><a href="?genre=suspense" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'suspense') ? 'class="active-genre"' : ''; ?>>Suspense</a></li>
-        <li><a href="?genre=thriller" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'thriller') ? 'class="active-genre"' : ''; ?>>Thriller</a></li>
-        <li><a href="?genre=travel" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'travel') ? 'class="active-genre"' : ''; ?>>Travel</a></li>
-        <li><a href="?genre=western" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'western') ? 'class="active-genre"' : ''; ?>>Western</a></li>
+        <li><a href="?genre=action" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'action') ? 'class="active-genre"' : ''; ?>>Action <span class="genre-count">(<?php echo isset($genre_counts['action']) ? $genre_counts['action'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=adventure" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'adventure') ? 'class="active-genre"' : ''; ?>>Adventure <span class="genre-count">(<?php echo isset($genre_counts['adventure']) ? $genre_counts['adventure'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=autobiography" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'autobiography') ? 'class="active-genre"' : ''; ?>>Autobiography <span class="genre-count">(<?php echo isset($genre_counts['autobiography']) ? $genre_counts['autobiography'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=biography" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'biography') ? 'class="active-genre"' : ''; ?>>Biography <span class="genre-count">(<?php echo isset($genre_counts['biography']) ? $genre_counts['biography'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=children" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'children') ? 'class="active-genre"' : ''; ?>>Children <span class="genre-count">(<?php echo isset($genre_counts['children']) ? $genre_counts['children'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=classics" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'classics') ? 'class="active-genre"' : ''; ?>>Classics <span class="genre-count">(<?php echo isset($genre_counts['classics']) ? $genre_counts['classics'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=comedy" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'comedy') ? 'class="active-genre"' : ''; ?>>Comedy <span class="genre-count">(<?php echo isset($genre_counts['comedy']) ? $genre_counts['comedy'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=comingofage" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'comingofage') ? 'class="active-genre"' : ''; ?>>Coming Of Age <span class="genre-count">(<?php echo isset($genre_counts['comingofage']) ? $genre_counts['comingofage'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=contemporary" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'contemporary') ? 'class="active-genre"' : ''; ?>>Contemporary <span class="genre-count">(<?php echo isset($genre_counts['contemporary']) ? $genre_counts['contemporary'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=crime" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'crime') ? 'class="active-genre"' : ''; ?>>Crime <span class="genre-count">(<?php echo isset($genre_counts['crime']) ? $genre_counts['crime'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=drama" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'drama') ? 'class="active-genre"' : ''; ?>>Drama <span class="genre-count">(<?php echo isset($genre_counts['drama']) ? $genre_counts['drama'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=erotica" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'erotica') ? 'class="active-genre"' : ''; ?>>Erotica <span class="genre-count">(<?php echo isset($genre_counts['erotica']) ? $genre_counts['erotica'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=fantasy" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'fantasy') ? 'class="active-genre"' : ''; ?>>Fantasy <span class="genre-count">(<?php echo isset($genre_counts['fantasy']) ? $genre_counts['fantasy'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=fiction" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'fiction') ? 'class="active-genre"' : ''; ?>>Fiction <span class="genre-count">(<?php echo isset($genre_counts['fiction']) ? $genre_counts['fiction'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=gothic" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'gothic') ? 'class="active-genre"' : ''; ?>>Gothic <span class="genre-count">(<?php echo isset($genre_counts['gothic']) ? $genre_counts['gothic'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=history" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'history') ? 'class="active-genre"' : ''; ?>>History <span class="genre-count">(<?php echo isset($genre_counts['history']) ? $genre_counts['history'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=horror" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'horror') ? 'class="active-genre"' : ''; ?>>Horror <span class="genre-count">(<?php echo isset($genre_counts['horror']) ? $genre_counts['horror'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=memoir" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'memoir') ? 'class="active-genre"' : ''; ?>>Memoir <span class="genre-count">(<?php echo isset($genre_counts['memoir']) ? $genre_counts['memoir'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=mystery" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'mystery') ? 'class="active-genre"' : ''; ?>>Mystery <span class="genre-count">(<?php echo isset($genre_counts['mystery']) ? $genre_counts['mystery'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=nonfiction" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'nonfiction') ? 'class="active-genre"' : ''; ?>>Nonfiction <span class="genre-count">(<?php echo isset($genre_counts['nonfiction']) ? $genre_counts['nonfiction'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=philosophy" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'philosophy') ? 'class="active-genre"' : ''; ?>>Philosophy <span class="genre-count">(<?php echo isset($genre_counts['philosophy']) ? $genre_counts['philosophy'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=poetry" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'poetry') ? 'class="active-genre"' : ''; ?>>Poetry <span class="genre-count">(<?php echo isset($genre_counts['poetry']) ? $genre_counts['poetry'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=psychological" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'psychological') ? 'class="active-genre"' : ''; ?>>Psychological <span class="genre-count">(<?php echo isset($genre_counts['psychological']) ? $genre_counts['psychological'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=romance" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'romance') ? 'class="active-genre"' : ''; ?>>Romance <span class="genre-count">(<?php echo isset($genre_counts['romance']) ? $genre_counts['romance'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=satire" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'satire') ? 'class="active-genre"' : ''; ?>>Satire <span class="genre-count">(<?php echo isset($genre_counts['satire']) ? $genre_counts['satire'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=science" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'science') ? 'class="active-genre"' : ''; ?>>Science <span class="genre-count">(<?php echo isset($genre_counts['science']) ? $genre_counts['science'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=sciencefiction" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'sciencefiction') ? 'class="active-genre"' : ''; ?>>Science Fiction <span class="genre-count">(<?php echo isset($genre_counts['sciencefiction']) ? $genre_counts['sciencefiction'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=selfhelp" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'selfhelp') ? 'class="active-genre"' : ''; ?>>Self Help <span class="genre-count">(<?php echo isset($genre_counts['selfhelp']) ? $genre_counts['selfhelp'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=shorts" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'shorts') ? 'class="active-genre"' : ''; ?>>Shorts <span class="genre-count">(<?php echo isset($genre_counts['shorts']) ? $genre_counts['shorts'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=spirituality" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'spirituality') ? 'class="active-genre"' : ''; ?>>Spirituality <span class="genre-count">(<?php echo isset($genre_counts['spirituality']) ? $genre_counts['spirituality'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=survival" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'survival') ? 'class="active-genre"' : ''; ?>>Survival <span class="genre-count">(<?php echo isset($genre_counts['survival']) ? $genre_counts['survival'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=suspense" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'suspense') ? 'class="active-genre"' : ''; ?>>Suspense <span class="genre-count">(<?php echo isset($genre_counts['suspense']) ? $genre_counts['suspense'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=thriller" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'thriller') ? 'class="active-genre"' : ''; ?>>Thriller <span class="genre-count">(<?php echo isset($genre_counts['thriller']) ? $genre_counts['thriller'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=travel" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'travel') ? 'class="active-genre"' : ''; ?>>Travel <span class="genre-count">(<?php echo isset($genre_counts['travel']) ? $genre_counts['travel'] : 0; ?>)</span></a></li>
+        <li><a href="?genre=western" <?php echo (isset($_GET['genre']) && $_GET['genre'] == 'western') ? 'class="active-genre"' : ''; ?>>Western <span class="genre-count">(<?php echo isset($genre_counts['western']) ? $genre_counts['western'] : 0; ?>)</span></a></li>
     </ul>
 </div>
         <div id="rightcolumn">

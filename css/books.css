@@ -199,6 +199,13 @@ main {
     transform: translateX(10px);
 }
 
+.genre-count {
+    float: right;
+    color: #667eea;
+    font-size: 14px;
+    font-weight: 600;
+}
+
 #rightcolumn {
     flex: 1;
     margin: 10px; /* Added margin all around */
