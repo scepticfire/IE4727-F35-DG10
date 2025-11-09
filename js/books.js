@@ -1,14 +1,9 @@
 function openModal(bookId) {
     var modal = document.getElementById('bookModal');
     var modalBody = document.getElementById('modal-body');
-    
     // Show modal
     modal.style.display = 'block';
-    
-    // Show loading message
     modalBody.innerHTML = '<p>Loading...</p>';
-    
-    // Fetch book details using XMLHttpRequest (no jQuery/AJAX libraries)
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '../scripts/get_book.php?book_id=' + bookId, true);
     
@@ -32,7 +27,6 @@ function closeModal() {
     modal.style.display = 'none';
 }
 
-// Close modal when clicking outside of it
 window.onclick = function(event) {
     var modal = document.getElementById('bookModal');
     if (event.target == modal) {

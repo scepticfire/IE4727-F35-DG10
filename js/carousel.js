@@ -14,7 +14,6 @@ function createDots() {
     updateDots();
 }
 
-// Move carousel
 function moveCarousel(direction) {
     currentSlide += direction;
     
@@ -27,7 +26,6 @@ function moveCarousel(direction) {
     updateCarousel();
 }
 
-// Go to specific slide
 function goToSlide(index) {
     currentSlide = index;
     updateCarousel();
@@ -41,7 +39,6 @@ function updateCarousel() {
     updateDots();
 }
 
-// Update dots
 function updateDots() {
     const dots = document.querySelectorAll('.dot');
     dots.forEach(function(dot, index) {
@@ -53,11 +50,10 @@ function updateDots() {
     });
 }
 
-// Auto-play carousel
 function autoPlayCarousel() {
     setInterval(function() {
         moveCarousel(1);
-    }, 5000);
+    }, 5000);// Auto-play carousel every 5 seconds
 }
 
 // Initialize

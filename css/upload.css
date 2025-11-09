@@ -19,7 +19,7 @@ header {
     grid-row: 1;
     margin-bottom: 20px;
     border-bottom: 5px solid #111e48;
-    position: relative; /* important for absolute centering of nav */
+    position: relative; /* absolute centering of nav */
 }
 
 .logo-container {
@@ -29,11 +29,10 @@ header {
 }
 
 .logo-icon {
-    height: 50px;   /* adjust depending on your design */
-    margin-right: 10px; /* space between icon and title */
+    height: 50px;   
+    margin-right: 10px; 
 }
 
-/* push the h1 to the left of the header */
 header h1 {
     font-family: "Bona Nova SC", serif;
     font-weight: 400;
@@ -43,14 +42,13 @@ header h1 {
     color: #00c8cf;
 }
 
-
 nav {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 0; /* removes whitespace between inline elements */
+    font-size: 0; 
     display: flex;
-    align-items: center; /* vertically centers all items (which aligns them horizontally on the same line) */
+    align-items: center; /* vertically centers all items*/
 
 }
 
@@ -60,21 +58,21 @@ nav img {
     font-family: "Koh Santepheap", serif;
     font-weight: 100;
     font-style: normal;
-    font-size: 20px; /* restore font size for links */
+    font-size: 20px; 
     text-decoration: none;
     color: #848ae0;
 }
 
 nav a:not(:last-child)::after {
     content: ' | ';
-    margin: 0 10px; /* 50px on left and right */
+    margin: 0 10px; 
 }
 
 main {
     color:white;
     grid-row: 2;
     margin: 20px auto;
-    padding: 20px 0;           /* top & bottom padding */
+    padding: 20px 0;
     width: 70%;
 }
 
@@ -88,14 +86,14 @@ main h2 {
 main form {
     display: grid;
     grid-template-columns: 1fr 1fr; /* label column auto-sizes, input takes rest */
-    gap: 40px 20px; /* 15px row gap, 20px column gap */
+    gap: 40px 20px; 
     max-width: 100%;
     color: #606788;
     font-size: 2em;
 }
 
 main form label {
-    text-align: left; /* aligns label text to the right */
+    text-align: left;
 }
 
 main form input[type="text"] {
@@ -138,7 +136,7 @@ main form label[for="genre-label"] {
 }
 
 main form .genre-buttons {
-    grid-column: 1 / -1; /* spans both columns */
+    grid-column: 1 / -1; 
     display: grid;
     grid-template-columns: repeat(6, 1fr); /* 6 columns */
     gap: 10px;
@@ -149,7 +147,6 @@ main form .genre-buttons {
     display: none;
 }
 
-/* Style the label as a button */
 .genre-buttons label {
     padding: 10px 20px;
     background-color: #626396;
@@ -162,7 +159,6 @@ main form .genre-buttons {
     font-size: 0.5em;
 }
 
-/* Hover effect */
 .genre-buttons label:hover {
     background-color: #7373a8;
 }
@@ -175,10 +171,10 @@ main form .genre-buttons {
 
 /* Container for buttons */
 main form .button-container {
-    grid-column: 1 / -1; /* span both columns */
+    grid-column: 1 / -1; 
     display: flex;
-    justify-content: center; /* center the buttons */
-    gap: 20px; /* 20px space between buttons */
+    justify-content: center;
+    gap: 20px; 
     margin-top: 20px;
 }
 
@@ -189,7 +185,7 @@ main form input[type="submit"] {
     cursor: pointer;
     font-size: 1em;
     border: none;
-    width: 200px; /* set fixed width for each button */
+    width: 200px;
 }
 
 main form input[type="reset"],
@@ -209,7 +205,7 @@ main form input[type="submit"] {
 
 main form input[type="reset"]:hover,
 main form input[type="submit"]:hover {
-    transform: scale(1.1); /* adjust the value: 1.05 = 5% larger, 1.15 = 15% larger */
+    transform: scale(1.1);
 }
 
 /* Hide the default file input */
@@ -217,7 +213,7 @@ input[type="file"] {
   display: none;
 }
 
-/* Style the label as a button */
+
 .custom-file-upload {
   display: inline-block;
   padding: 12px 24px;
@@ -245,8 +241,8 @@ footer {
     color: #666;
     background-color: #040723;
     grid-row: 3;
-    margin-top: 20px;      /* adds space */
-    border-top: 5px solid #111e48; /* sets color */
+    margin-top: 20px;      
+    border-top: 5px solid #111e48; 
 }
 
 .blurred {

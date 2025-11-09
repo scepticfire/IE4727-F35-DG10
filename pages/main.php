@@ -43,10 +43,9 @@ $isLoggedIn = isset($_SESSION['username']);
     
 <main>
     <?php
-    // Include database connection
     include('../scripts/database_connect.php');
     
-    // Get books for carousel
+    //carousel
     $carousel_query = "SELECT book_id, name, author, image_path FROM books ORDER BY book_id DESC LIMIT 5";
     $carousel_result = $db->query($carousel_query);
     $carousel_books = [];

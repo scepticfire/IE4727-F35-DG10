@@ -22,7 +22,7 @@ header {
     grid-row: 1;
     margin-bottom: 20px;
     border-bottom: 5px solid #111e48;
-    position: relative; /* important for absolute centering of nav */
+    position: relative; /* absolute centering of nav */
 }
 
 .logo-container {
@@ -32,11 +32,10 @@ header {
 }
 
 .logo-icon {
-    height: 50px;   /* adjust depending on your design */
-    margin-right: 10px; /* space between icon and title */
+    height: 50px;   
+    margin-right: 10px; 
 }
 
-/* push the h1 to the left of the header */
 header h1 {
     font-family: "Bona Nova SC", serif;
     font-weight: 400;
@@ -51,9 +50,9 @@ nav {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 0; /* removes whitespace between inline elements */
+    font-size: 0;
     display: flex;
-    align-items: center; /* vertically centers all items (which aligns them horizontally on the same line) */
+    align-items: center; /* vertically centers all items*/
 
 }
 
@@ -63,14 +62,14 @@ nav img {
     font-family: "Koh Santepheap", serif;
     font-weight: 100;
     font-style: normal;
-    font-size: 20px; /* restore font size for links */
+    font-size: 20px; 
     text-decoration: none;
     color: #848ae0;
 }
 
 nav a:not(:last-child)::after {
     content: ' | ';
-    margin: 0 10px; /* 50px on left and right */
+    margin: 0 10px; 
 }
 /* Login Section Styles ///////////////////////////////////////////////////////////////////////*/
 
@@ -283,6 +282,6 @@ footer {
     color: #666;
     background-color: #040723;
     grid-row: 3;
-    margin-top: 20px;      /* adds space */
-    border-top: 5px solid #111e48; /* sets color */
+    margin-top: 20px;      
+    border-top: 5px solid #111e48; 
 }
