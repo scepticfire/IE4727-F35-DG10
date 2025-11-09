@@ -81,7 +81,7 @@ if (isset($_SESSION['username'])) {
         <p>&copy; 2025 My Website. All rights reserved.</p>
     </footer>
     <script src="../js/login.js"></script>
-    <script src="../scripts/form_validation.js"></script>
+    <script src="../js/form_validation.js"></script>
 </body>
 
 </html>
