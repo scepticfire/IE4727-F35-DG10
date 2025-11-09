@@ -204,3 +204,53 @@ thead th {
 tbody td {
     color: #c7deea; /* also apply to book rows */
 }
+
+/* Cart action buttons */
+.cart-actions {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 22px;
+  align-items: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0b2130;
+  box-shadow: 0 6px 18px rgba(6,22,34,0.18);
+  transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(6,22,34,0.2);
+  opacity: 0.98;
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 12px rgba(6,22,34,0.12);
+}
+
+/*empty cart button */
+.btn-empty {
+  background: linear-gradient(180deg,#ffdede 0%, #ffc4c4 100%);
+  border: 1px solid rgba(220,20,60,0.15);
+}
+
+/*just a dummy button for payment*/
+.btn-primary {
+  background: linear-gradient(180deg,#cfefff 0%, #9ed9ff 100%);
+  border: 1px solid rgba(0,120,200,0.12);
+}
+
+/*to make sure links inside table area remain centered on small screens*/
+@media (max-width: 520px) {
+  .cart-actions { flex-direction: column; gap: 14px; }
+  .btn { width: 80%; text-align: center; padding: 12px 18px; font-size: 16px; }
+}

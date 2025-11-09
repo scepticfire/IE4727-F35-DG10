@@ -24,7 +24,7 @@ if ($genre_count_result && $genre_count_result->num_rows > 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Basic Webpage</title>
+    <title>Book Catalogue</title>
     <link rel="stylesheet" href="../css/books.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -281,7 +281,7 @@ $query_string = !empty($params) ? '&' . implode('&', $params) : '';
     </main>
     
     <footer>
-        <p>&copy; 2025 My Website. All rights reserved.</p>
+        <p>&copy; 2025 OpenTome. All rights reserved.</p>
     </footer>
     <div id="successMessage">Added to cart!</div>
     <script src="../js/books.js"></script>

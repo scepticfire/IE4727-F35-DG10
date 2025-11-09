@@ -1,4 +1,5 @@
 <?php
+//connects to OpenTome MySQL database
 @$db = new mysqli('localhost', 'root', '', 'opentome');
 
 if (mysqli_connect_errno()){

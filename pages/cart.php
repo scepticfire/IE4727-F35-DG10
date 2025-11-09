@@ -59,6 +59,7 @@ if (isset($_GET['empty'])) {
             </tr>
         </thead>
         <tbody>
+            <!--checks for empty cart-->
         <?php if (!empty($_SESSION['cart'])): 
             $total = 0;
             foreach ($_SESSION['cart'] as $item):
@@ -80,15 +81,17 @@ if (isset($_GET['empty'])) {
         <?php endif; ?>
         </tbody>
       </table>
-
+            <!--appears if cart is not empty, tgt with the 2 btns-->
       <?php if (!empty($_SESSION['cart'])): ?>
-        <p><a href="cart.php?empty=true">Empty Cart</a></p>
-      <?php endif; ?>
+        <div class="cart-actions">
+            <a href="cart.php?empty=true" class="btn btn-empty" role="button">Empty Cart</a>
+            <a href="#" class="btn btn-primary" role="button">Proceed to Payment</a> <!--This is a dummy payment button-->
+        </div>
+       <?php endif; ?>
 
     </main>
-
     <footer>
-        <p>&copy; 2025 My Website. All rights reserved.</p>
+        <p>&copy; 2025 OpenTome. All rights reserved.</p>
     </footer>
 </body>
 </html>

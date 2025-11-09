@@ -1,4 +1,5 @@
 <?php
+//used to insert new books into the database from upload.php form
 include 'database_connect.php';
 
 $book_name = trim($_POST['name']);
@@ -8,7 +9,7 @@ $book_description = trim($_POST['description']);
 $book_price = trim($_POST['price']);
 $book_genres = isset($_POST['genre']) ? $_POST['genre'] : [];
 
-//upload image
+//upload image to local directory
 $target_dir = "../cover-page-img/";
 $target_file = $target_dir . basename($_FILES["image"]["name"]);
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -69,7 +70,7 @@ $get_genre_id_stmt->close();
 $link_stmt->close();
 $db->close();
 
-// redirect back to upload page with a flag instead of echoing text
+//redirect back to upload page
 header('Location: ../pages/upload.php?uploaded=1');
 exit();
 ?>

@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
     async function checkUsernameAvailability(username, timeoutMs = 8000) {
         if (!username) return { ok: false, status: 'empty' };
 
-        // resolve path relative to the page (pages/login.html -> ../scripts/check_username.php)
         const url = new URL('../scripts/check_username.php', window.location.href).toString();
 
         const controller = new AbortController();
@@ -150,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //submit form now that all validations passed
         form.removeEventListener("submit", handleSubmit);
-        // call native submit in case a control shadows form.submit
+        //call native submit in case a control shadows form.submit
         HTMLFormElement.prototype.submit.call(form);
     }
 

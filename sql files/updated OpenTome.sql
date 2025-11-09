@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2025 at 05:10 PM
+-- Generation Time: Nov 09, 2025 at 08:56 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -50,7 +50,9 @@ INSERT INTO `books` (`book_id`, `name`, `author`, `language`, `description`, `pr
 (8, 'IT', 'Stephen King', 'English', 'Stephen King\'s novel\r\nIt is a 1986 horror story about seven adult friends who reunite in their hometown of Derry, Maine, to battle a shape-shifting evil entity that awakens roughly every 27 years to prey on children. The novel alternates between two timelines: 1957-1958, where they first confront the creature as children known as \"The Losers Club,\" and 1984-1985, when they return as adults. The creature primarily appears as the clown Pennywise, but it can transform into its victims\' worst fears', 12.00, '../cover-page-img/cover_690a14f3922204.09586107.jpg'),
 (9, 'Dr. Stone Vol 2', 'Riichiro Inagaki', 'Japanese', 'IMAGINE WAKING TO A WORLD WHERE EVERY LAST HUMAN HAS BEEN MYSTERIOUSLY TURNED TO STONE...\r\n\r\nSenku, Taiju and Yuzuriha are well on their way to crafting gunpowder when they spot smoke far off in the distance. Convinced that it\'s a sign of other humans, Senku takes a huge risk by sending up a smoke signal of his own. Meanwhile, Tsukasa is determined to stop Senku from making gunpowder, and his arrival on the scene could spell the end for our heroes!', 13.00, '../cover-page-img/cover_690a159a9533b5.42438185.jpg'),
 (10, 'The Voyage of the Dawn Treader', 'C. S. Lewis', 'English', 'The Voyage of the Dawn Treader is a book in C.S. Lewis\'s The Chronicles of Narnia series about Edmund and Lucy Pevensie, who are transported to Narnia with their cousin Eustace Scrubb. They join King Caspian on his ship, the Dawn Treader, to sail east in search of seven lost lords and the end of the world. Their journey is filled with adventures, including encounters with mythical creatures, islands, and challenges that test their courage and faith.', 18.00, '../cover-page-img/cover_690a165633e184.57504379.jpg'),
-(11, 'Case Closed Vol 1', 'Gosho Aoyama', 'Japanese', 'Detective Conan Vol. 1 introduces the series\' premise: high school detective Shinichi Kudo is shrunk into a child\'s body after an encounter with a mysterious criminal organization. He takes on the alias Conan Edogawa to hide his true identity and lives with his childhood friend Ran Mouri and her father, a private detective. The volume follows Conan as he solves various cases while trying to find a cure for his condition.', 9.00, '../cover-page-img/cover_690a17d2678457.90946541.jpg');
+(11, 'Case Closed Vol 1', 'Gosho Aoyama', 'Japanese', 'Detective Conan Vol. 1 introduces the series\' premise: high school detective Shinichi Kudo is shrunk into a child\'s body after an encounter with a mysterious criminal organization. He takes on the alias Conan Edogawa to hide his true identity and lives with his childhood friend Ran Mouri and her father, a private detective. The volume follows Conan as he solves various cases while trying to find a cure for his condition.', 9.00, '../cover-page-img/cover_690a17d2678457.90946541.jpg'),
+(12, 'Bridge to Terabithia', 'Katherine Paterson', 'English', 'Bridge to Terabithia is a children\'s novel by Katherine Paterson about the friendship between two fifth-graders, Jess Aarons and Leslie Burke. They create a magical kingdom called Terabithia in the woods, but their story takes a tragic turn when Leslie dies, forcing Jess to confront his grief and discover his own inner strength. The book won the Newbery Medal for its poignant exploration of friendship, imagination, and loss.', 11.00, '../cover-page-img/cover_69103cc1922412.75035078.jpg'),
+(13, 'Rome', 'Rick Steves', 'English', 'Explore ancient ruins and view Renaissance masterpieces in this truly modern Eternal City. Inside Rick Steves Rome you\'ll find:\r\n\r\n  -  Fully updated, comprehensive coverage for spending a week or more exploring Rome\r\n  -  Rick\'s strategic advice on how to get the most out of your time and money, with rankings of his must-see favorites\r\n  - Top sights and hidden gems, from the Colosseum and the Sistine Chapel to corner trattorias, cozy wine bars, and the perfect scoop of gelato\r\n  -  How to connect with local culture: Indulge in the Italian happy hour tradition of aperitivo, savor a plate of cacio e pepe, or chat with fans about the latest soccer match\r\n  -  Beat the crowds, skip the lines, and avoid tourist traps with Rick\'s candid, humorous insight\r\n  -  The best places to eat, sleep, and experience la dolce far niente\r\n    Self-guided walking tours of lively neighborhoods and sights like the Roman Forum, St. Peter\'s Basilica, and the Vatican Museums\r\n  -  Detailed neighborhood maps and a fold-out city map for exploring on the go\r\n  -  Useful resources including a packing list, Italian phrase book, a historical overview, and recommended reading\r\n  -  Coverage of Central Rome, Vatican City, Trastevere, and more, plus day trips to Ostia Antica, Tivoli, Naples, and Pompeii \r\n\r\nMake the most of every day and every dollar with Rick Steves Rome.', 23.00, '../cover-page-img/cover_6910416a01e860.68486633.jpg');
 
 -- --------------------------------------------------------
 
@@ -89,7 +91,10 @@ INSERT INTO `book_genres` (`book_id`, `genre_id`) VALUES
 (10, 25),
 (10, 26),
 (11, 27),
-(11, 28);
+(11, 28),
+(12, 9),
+(12, 25),
+(13, 31);
 
 -- --------------------------------------------------------
 
@@ -121,7 +126,8 @@ INSERT INTO `genres` (`genre_id`, `genre_name`) VALUES
 (11, 'romance'),
 (21, 'science'),
 (22, 'sciencefiction'),
-(12, 'selfhelp');
+(12, 'selfhelp'),
+(31, 'travel');
 
 -- --------------------------------------------------------
 
@@ -143,6 +149,7 @@ INSERT INTO `registered_users` (`username`, `password`, `email`) VALUES
 ('allstars', '$2y$10$nwb0YdN3NEM7KerCYDjsneKZClQ6ktyNY', 'w@yahoo.com'),
 ('alltester', '$2y$10$zJpijfcOHFKrkreRuOdGdu1aFc.LVkrtM', 'w@yahoo.com'),
 ('charizard', '$2y$10$dUz1UX3p6tjM2ITxOBFr9OpR/iP8MilWZ', 'w@yahoo.com'),
+('charizardx', '$2y$10$QEGb.gN1zp5eLRGP6JZd2eyKxhgKvY9UzuhRWzRdvkhnxru437dOS', 'poke@yahoo.com'),
 ('charizardz', '$2y$10$VgxxOGyrc1PDSFQ.i96/IOMMoeV9.h935on.sK9eKC3s1QYtdDIf.', 'w@yahoo.com'),
 ('tester1', '$2y$10$Aqj3ejb9AE4J2TBWFaZ3B.PxFv1Z1A8Cj', 'w@yahoo.com'),
 ('tester2', '$2y$10$ARLC6v7cj7yDedWyf023SeSaJzXDhqbRj', 'w@yahoo.com'),
@@ -189,13 +196,13 @@ ALTER TABLE `registered_users`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `genre_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `genre_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Constraints for dumped tables

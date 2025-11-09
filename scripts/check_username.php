@@ -1,4 +1,5 @@
 <?php
+//used in conjuction with form_validation.js to check if a username is already taken via AJAX
 header('Content-Type: application/json; charset=utf-8');
 
 include "database_connect.php";
