@@ -182,3 +182,25 @@ footer {
     margin-top: 20px;      /* adds space */
     border-top: 5px solid #111e48; /* sets color */
 }
+
+table {
+    width: 50%;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #606788;
+    padding: 10px;
+    text-align: left;
+    font-family: "Koh Santepheap", serif;
+}
+
+thead th {
+    color: #c7deea;       /* blood red text */
+    background-color: #0b0e27; /* match your page background */
+    font-weight: 600;
+}
+
+tbody td {
+    color: #c7deea; /* also apply to book rows */
+}
