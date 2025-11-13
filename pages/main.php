@@ -58,7 +58,7 @@ $isLoggedIn = isset($_SESSION['username']);
     
     <!-- Carousel Section -->
     <div class="carousel-section">
-        <h2>Featured Books</h2>
+        <h2>Recently Added Books</h2>
         <div class="carousel-container">
             <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
             
