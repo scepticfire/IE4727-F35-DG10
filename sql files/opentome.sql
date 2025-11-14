@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2025 at 02:01 PM
+-- Generation Time: Nov 14, 2025 at 01:51 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,7 +42,7 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`book_id`, `name`, `author`, `language`, `description`, `price`, `image_path`) VALUES
-(3, 'One Piece Vol 1 ROMANCE DAWN - The Dawn of the Adventure', 'Echiro Oda', 'English', '001. ROMANCE DAWN —The Dawn of the Adventure— (ROMANCE DAWN—冒険の夜明け—, Romansu Dōn -Bōken no Yoake-?): A young boy named Monkey D. Luffy swears to become the Pirate King, accidentally eats the Gomu Gomu no Mi, and is given a straw hat by his idol, Shanks. Ten years later, Luffy sets out on the high seas.\r\n    002. That Guy, \"Straw Hat Luffy\" (その男\"麦わらのルフィ\", Sono Otoko \"Mugiwara no Rufi\"?): Luffy meets cabin boy Koby and defeats his abusive captain, Alvida.\r\n    003. Introducing \"Pirate Hunter Zoro\" (\"海賊狩りのゾロ\"登場, \"Kaizoku-gari no Zoro\" Tōjō?): Luffy and Koby arrive at an island where Roronoa Zoro is imprisoned. Intent on having him in his crew, Luffy meets him and a girl who reveals why he was captured.\r\n    004. Marine Captain \"Axe-Hand Morgan\" (海軍大佐\"斧手のモーガン\", Kaigun Taisa \"Onote no Mōgan?): Luffy goes to retrieve Zoro\'s swords, but enrages the captain of the Marine Base, Morgan.\r\n    005. The Pirate King and The Great Swordsman (海賊王と大剣豪, Kaizoku-Ō to Daikengō?): Morgan and the Marines go to kill Zoro and Koby, and Zoro remembers the promise he made to his deceased friend Kuina. However, Luffy saves them and Zoro tells him he will join his crew.\r\n    006. The First (一人目, Hitorime?): Luffy and Zoro battle against Morgan, Helmeppo, and the Marines.\r\n    007. Friends (友達, Tomodachi?): Luffy and Zoro leave peacefully, and Koby joins the Marines. He and the Marines thank the two for stopping Morgan.\r\n    008. Introducing Nami (ナミ登場, Nami Tōjō?): Luffy is captured by a bird and Zoro meets some of the Buggy Pirates. On an island, Luffy meets Nami, who is running away from some pirates.', 10.00, '../cover-page-img/cover_690618ee59a1f2.34802220.jpg'),
+(3, 'One Piece Vol 1', 'Echiro Oda', 'English', '001. ROMANCE DAWN —The Dawn of the Adventure— (ROMANCE DAWN—冒険の夜明け—, Romansu Dōn -Bōken no Yoake-?): A young boy named Monkey D. Luffy swears to become the Pirate King, accidentally eats the Gomu Gomu no Mi, and is given a straw hat by his idol, Shanks. Ten years later, Luffy sets out on the high seas.\r\n    002. That Guy, \"Straw Hat Luffy\" (その男\"麦わらのルフィ\", Sono Otoko \"Mugiwara no Rufi\"?): Luffy meets cabin boy Koby and defeats his abusive captain, Alvida.\r\n    003. Introducing \"Pirate Hunter Zoro\" (\"海賊狩りのゾロ\"登場, \"Kaizoku-gari no Zoro\" Tōjō?): Luffy and Koby arrive at an island where Roronoa Zoro is imprisoned. Intent on having him in his crew, Luffy meets him and a girl who reveals why he was captured.\r\n    004. Marine Captain \"Axe-Hand Morgan\" (海軍大佐\"斧手のモーガン\", Kaigun Taisa \"Onote no Mōgan?): Luffy goes to retrieve Zoro\'s swords, but enrages the captain of the Marine Base, Morgan.\r\n    005. The Pirate King and The Great Swordsman (海賊王と大剣豪, Kaizoku-Ō to Daikengō?): Morgan and the Marines go to kill Zoro and Koby, and Zoro remembers the promise he made to his deceased friend Kuina. However, Luffy saves them and Zoro tells him he will join his crew.\r\n    006. The First (一人目, Hitorime?): Luffy and Zoro battle against Morgan, Helmeppo, and the Marines.\r\n    007. Friends (友達, Tomodachi?): Luffy and Zoro leave peacefully, and Koby joins the Marines. He and the Marines thank the two for stopping Morgan.\r\n    008. Introducing Nami (ナミ登場, Nami Tōjō?): Luffy is captured by a bird and Zoro meets some of the Buggy Pirates. On an island, Luffy meets Nami, who is running away from some pirates.', 10.00, '../cover-page-img/cover_690618ee59a1f2.34802220.jpg'),
 (4, 'Fifty Shades Of Grey', 'E. L. James', 'English', 'When literature student Anastasia Steele goes to interview young entrepreneur Christian Grey, she encounters a man who is beautiful, brilliant, and intimidating. The unworldly, innocent Ana is startled to realize she wants this man and, despite his enigmatic reserve, finds she is desperate to get close to him.', 15.00, '../cover-page-img/cover_690a0fbc3a0c46.28527159.jpg'),
 (5, '50 laws of power book', 'Book by 50 Cent and Robert Greene', 'English', 'The 50th Law is a book by rapper 50 Cent and author Robert Greene that promotes fearlessness as the key to success and power. It argues that fear prevents people from seizing opportunities and taking bold actions, and uses 50 Cent\'s life story and historical examples to illustrate how overcoming fear leads to empowerment. The book\'s central message is to confront your fears head-on to unlock your true potential and achieve success in life and business', 8.00, '../cover-page-img/cover_690a1242593826.60915678.jpg'),
 (6, 'Moby-Dick', 'Herman Melville', 'English', 'Moby Dick is a novel by Herman Melville about Captain Ahab\'s obsessive quest for revenge against the giant white sperm whale, Moby Dick, which previously bit off his leg. Narrated by the sailor Ishmael, the story intertwines the epic sea adventure with detailed descriptions of whaling, social commentary, and philosophical themes like good and evil, fate, and human determination.', 8.00, '../cover-page-img/cover_690a130d969548.99814764.jpg'),
@@ -53,7 +53,9 @@ INSERT INTO `books` (`book_id`, `name`, `author`, `language`, `description`, `pr
 (11, 'Case Closed Vol 1', 'Gosho Aoyama', 'Japanese', 'Detective Conan Vol. 1 introduces the series\' premise: high school detective Shinichi Kudo is shrunk into a child\'s body after an encounter with a mysterious criminal organization. He takes on the alias Conan Edogawa to hide his true identity and lives with his childhood friend Ran Mouri and her father, a private detective. The volume follows Conan as he solves various cases while trying to find a cure for his condition.', 9.00, '../cover-page-img/cover_690a17d2678457.90946541.jpg'),
 (12, 'Bridge to Terabithia', 'Katherine Paterson', 'English', 'Bridge to Terabithia is a children\'s novel by Katherine Paterson about the friendship between two fifth-graders, Jess Aarons and Leslie Burke. They create a magical kingdom called Terabithia in the woods, but their story takes a tragic turn when Leslie dies, forcing Jess to confront his grief and discover his own inner strength. The book won the Newbery Medal for its poignant exploration of friendship, imagination, and loss.', 11.00, '../cover-page-img/cover_69103cc1922412.75035078.jpg'),
 (13, 'Rome', 'Rick Steves', 'English', 'Explore ancient ruins and view Renaissance masterpieces in this truly modern Eternal City. Inside Rick Steves Rome you\'ll find:\r\n\r\n  -  Fully updated, comprehensive coverage for spending a week or more exploring Rome\r\n  -  Rick\'s strategic advice on how to get the most out of your time and money, with rankings of his must-see favorites\r\n  - Top sights and hidden gems, from the Colosseum and the Sistine Chapel to corner trattorias, cozy wine bars, and the perfect scoop of gelato\r\n  -  How to connect with local culture: Indulge in the Italian happy hour tradition of aperitivo, savor a plate of cacio e pepe, or chat with fans about the latest soccer match\r\n  -  Beat the crowds, skip the lines, and avoid tourist traps with Rick\'s candid, humorous insight\r\n  -  The best places to eat, sleep, and experience la dolce far niente\r\n    Self-guided walking tours of lively neighborhoods and sights like the Roman Forum, St. Peter\'s Basilica, and the Vatican Museums\r\n  -  Detailed neighborhood maps and a fold-out city map for exploring on the go\r\n  -  Useful resources including a packing list, Italian phrase book, a historical overview, and recommended reading\r\n  -  Coverage of Central Rome, Vatican City, Trastevere, and more, plus day trips to Ostia Antica, Tivoli, Naples, and Pompeii \r\n\r\nMake the most of every day and every dollar with Rick Steves Rome.', 23.00, '../cover-page-img/cover_6910416a01e860.68486633.jpg'),
-(14, 'Steve Jobs (10TH ANNIV) /P: The Exclusive Biography', 'Walter Isaacson', 'English', '\"STEVE JOBS (10TH ANNIV) /P: The Exclusive Biography\" is\r\nWalter Isaacson\'s authorized biography of Apple co-founder Steve Jobs, based on over 40 interviews with Jobs and more than 100 of his associates, friends, and rivals. This edition is a comprehensive look at his life, focusing on his intense personality, his role in revolutionizing multiple industries, and the creation of iconic products like the Mac, iPod, and iPhone. The book was written with Jobs\'s cooperation but without his control over the content, providing an unvarnished and candid look at his life and professional conduct.', 30.00, '../cover-page-img/cover_6910b95751c346.87726090.jpg');
+(14, 'Steve Jobs Biography', 'Walter Isaacson', 'English', '\"STEVE JOBS (10TH ANNIV) /P: The Exclusive Biography\" is\r\nWalter Isaacson\'s authorized biography of Apple co-founder Steve Jobs, based on over 40 interviews with Jobs and more than 100 of his associates, friends, and rivals. This edition is a comprehensive look at his life, focusing on his intense personality, his role in revolutionizing multiple industries, and the creation of iconic products like the Mac, iPod, and iPhone. The book was written with Jobs\'s cooperation but without his control over the content, providing an unvarnished and candid look at his life and professional conduct.', 30.00, '../cover-page-img/cover_6910b95751c346.87726090.jpg'),
+(15, 'One Piece Volume 32', 'Eiichiro Oda', 'Japanese', '296. High-Altitude Situation (最空局面, Saikū Kyokumen?): Zoro cuts Giant Jack, yet it doesn\'t fall. Nola has a flashback to the ringing Golden Bell and crashes her head into the beanstalk, which, combined with a Reject Dial from Wyper, finally causes it to fall.\r\n297. Praises of the Earth (大地讃称, Daichi Sanshō?): Luffy stops Enel\'s Raigo using the Golden Ball that has been stuck on his hand.\r\n298. Love Song (島の歌声, Rabu Songu?): Luffy finally overcomes and defeats Enel. Luffy rings the Golden Bell in hopes Mont Blanc Cricket will hear the sound of the bell and its message.\r\n299. Fantasia (幻想曲, Fantajia?): Enel is defeated and the sound of the Shandorian Golden Belfry Bell, though 400 years late, is heard.\r\n300. Symphony (交響曲, Shinfonī?): The war is over and the Straw Hat Pirates rest with the Shandian warriors. Pagaya turns out to have survived Enel\'s wrath.\r\n301. I Was Here (我ここに至る, Ware Koko ni Itaru?): The Straw Hats try to steal the gold from the ruins of Shandora. Robin deciphers the Poneglyph located in the Bell, discovering that Gol D. Roger knew how to read and write Ponegylphs. The Shandians then offer a golden pillar to the Straw Hats, who misunderstand the gesture as anger and run with their stolen gold.\r\n302. Finale (最終楽章, Fināre?): The Shandia Chief asks Gan Fall to be the God of Skypiea once again and he accepts. The Straw Hat Pirates, with the help of an Octopus Balloon, return to the Blue Sea.\r\n303. Rich Pirates (金持ち海賊団, Kanemochi Kaizoku-dan?): While Donquixote Doflamingo punishes Bellamy for being defeated by Luffy, the Straw Hat Pirates continues their journey on the Octopus Balloon.\r\n304. Long Island Adventure (長い島の冒険, Nagai Shima no Bōken?): The Straw Hats land on Long Ring Long Land, where they meet Shelly, a tall horse.\r\n305. Foxy the Silver Fox (銀ギツネのフォクシー, Gin Gitsune no Fokushī?): The man that fell from the bamboo is Tonjit, the owner of Shelly. He was stuck on the stilts for 10 years. Foxy arrives at the island, challenging the Straw Hats to a Davy Back Fight.', 10.00, '../cover-page-img/cover_6914176b41dcb7.93136260.jpg'),
+(16, 'Demon Slayer Vol3', 'Koyoharu Gotouge', 'Japanese', 'In Taisho-era Japan, kindhearted Tanjiro Kamado makes a living selling charcoal. But his peaceful life is shattered when a demon slaughters his entire family. His little sister Nezuko is the only survivor, but she has been transformed into a demon herself! Tanjiro sets out on a dangerous journey to find a way to return his sister to normal and destroy the demon who ruined his life.\r\n\r\nTanjiro and Nezuko cross paths with two powerful demons who fight with magical weapons. Even help from Tamayo and Yushiro may not be enough to defeat these demons who claim to belong to the Twelve Kizuki that directly serve Kibutsuji, the demon responsible for all of Tanjiro’s woes! But if these demons can be defeated, what secrets can they reveal about Kibutsuji?', 13.00, '../cover-page-img/cover_69143bc0a32d70.50241255.jpg');
 
 -- --------------------------------------------------------
 
@@ -97,7 +99,14 @@ INSERT INTO `book_genres` (`book_id`, `genre_id`) VALUES
 (12, 25),
 (13, 31),
 (14, 15),
-(14, 32);
+(14, 32),
+(15, 7),
+(15, 8),
+(15, 9),
+(16, 7),
+(16, 8),
+(16, 9),
+(16, 39);
 
 -- --------------------------------------------------------
 
@@ -119,6 +128,7 @@ INSERT INTO `genres` (`genre_id`, `genre_name`) VALUES
 (8, 'adventure'),
 (32, 'biography'),
 (25, 'children'),
+(39, 'comedy'),
 (27, 'crime'),
 (10, 'erotica'),
 (26, 'fantasy'),
@@ -153,6 +163,7 @@ INSERT INTO `registered_users` (`username`, `password`, `email`) VALUES
 ('allstars', '$2y$10$nwb0YdN3NEM7KerCYDjsneKZClQ6ktyNY', 'w@yahoo.com'),
 ('alltester', '$2y$10$zJpijfcOHFKrkreRuOdGdu1aFc.LVkrtM', 'w@yahoo.com'),
 ('charizard', '$2y$10$dUz1UX3p6tjM2ITxOBFr9OpR/iP8MilWZ', 'w@yahoo.com'),
+('charizardg', '$2y$10$yEA8rlH3LSDgLrGt2wFDW.Vw.pCE/f7Sw.In9e0CzDb8/hR1XRDqS', 'wwong031@e.ntu.edu.sg'),
 ('charizardmega', '$2y$10$VNtDZpmi2/IXV6UgXwqGGe8wPZDIHywss9H5cfaQqwEQzo3mXGEVe', 'pokmon2@gmail.com'),
 ('charizardx', '$2y$10$QEGb.gN1zp5eLRGP6JZd2eyKxhgKvY9UzuhRWzRdvkhnxru437dOS', 'poke@yahoo.com'),
 ('charizardz', '$2y$10$VgxxOGyrc1PDSFQ.i96/IOMMoeV9.h935on.sK9eKC3s1QYtdDIf.', 'w@yahoo.com'),
@@ -202,13 +213,13 @@ ALTER TABLE `registered_users`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `genre_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `genre_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- Constraints for dumped tables
